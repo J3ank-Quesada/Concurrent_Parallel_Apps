@@ -17,7 +17,7 @@ class VisorFuturo
   void evaluarSequia(int f, int c);
   void evaluarReforestacion(int f, int c);
   void evaluarHacimiento(int f, int c);
-  void examinarCelda(int f, int c, char encontrar, int cuantosEncontrar);
+  int examinarCelda(int f, int c, char encontrar);
   bool verificarPosicion(int f, int c);
 };
 
