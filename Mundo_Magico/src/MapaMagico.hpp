@@ -9,9 +9,9 @@ class MapaMagico{
     public:
     int numeroF;
     int numeroC;
-    MapaMagico();
     std::vector<std::vector<char>> mapa;
-
-
-}
+    MapaMagico();
+    MapaMagico(int f, int c);
+    void setTamanioMapa(int f, int c);
+};
 #endif  // MAPAMAGICO_H_
