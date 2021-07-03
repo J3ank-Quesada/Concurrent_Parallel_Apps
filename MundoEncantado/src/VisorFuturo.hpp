@@ -19,6 +19,7 @@ class VisorFuturo
   MapaMagico* original;
   void evaluarReglas(int f, int c);
   public:
+  VisorFuturo();
   VisorFuturo(MapaMagico* mapa);
   ~VisorFuturo();
   void revisarMapa();

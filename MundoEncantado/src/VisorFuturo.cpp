@@ -1,6 +1,8 @@
 #include "VisorFuturo.hpp"
 #include <iostream>
+VisorFuturo::VisorFuturo(){
 
+}
 VisorFuturo::VisorFuturo(MapaMagico* mapa){
   this->original = mapa;
 }
@@ -15,8 +17,8 @@ void VisorFuturo::revisarMapa(){
       evaluarReglas(f,c);
     }
   }
+  ++copia.numeroActual;
   *original = copia;
-  original->procesarMapaActual();
 }
 
 void VisorFuturo::evaluarReglas(int f, int c){
