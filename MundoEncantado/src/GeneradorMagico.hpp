@@ -9,12 +9,12 @@
 class GeneradorMagico {
  private:
   std::vector<Trabajo> trabajos;
-  std::vector<MapaMagico> mapasMagicos;
+  std::vector<MapaMagico*> mapasMagicos;
   Lector lector;
  public:
   GeneradorMagico();
   ~GeneradorMagico(){};
-  std::vector<MapaMagico>* obtenerIslas(std::string nombreArchivo);
+  std::vector<MapaMagico*>* obtenerIslas(std::string nombreArchivo);
 };
 
 #endif // GENERADORMAGICO_H_

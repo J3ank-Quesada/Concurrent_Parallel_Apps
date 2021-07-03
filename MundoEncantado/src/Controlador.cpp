@@ -16,4 +16,10 @@ void Controlador::iniciar(std::string nombreArchivo){
     clarividente.verDestino();
     Oraculo oraculo;
     oraculo.ecribirSalida(islas);
+    liberarMemoria();
+}
+void Controlador::liberarMemoria(){
+    for(size_t i = 0 ; i < islas->size(); i++){
+        delete islas->at(i);
+    }
 }

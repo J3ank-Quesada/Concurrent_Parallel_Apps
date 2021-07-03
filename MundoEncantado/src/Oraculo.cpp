@@ -4,9 +4,9 @@
 #include <string>
 
 void Oraculo::ecribirSalida(
-  std::vector<MapaMagico>* mapasMagicos) {
+  std::vector<MapaMagico*>* mapasMagicos) {
     for (size_t i = 0; i < mapasMagicos->size(); i++) {
-      MapaMagico *mapaMagico = &mapasMagicos->at(i);
+      MapaMagico *mapaMagico = mapasMagicos->at(i);
       std::ofstream archivo;
       std::string nombreArchivo = "";
       size_t posicionPunto = mapaMagico->miNombre.find_first_of(".");
@@ -19,7 +19,7 @@ void Oraculo::ecribirSalida(
       nombreArchivo+= ".txt";
       archivo.open(nombreArchivo);
       if (archivo.is_open()) {
-        archivo << mapasMagicos->at(i);
+        archivo << *mapasMagicos->at(i);
         archivo.close();
       } else {
         throw std::runtime_error("No se pudo abrir el archivo");
