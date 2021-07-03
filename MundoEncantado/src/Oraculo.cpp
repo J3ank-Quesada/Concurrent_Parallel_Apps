@@ -22,7 +22,7 @@ void Oraculo::ecribirSalida(
         archivo << *mapasMagicos->at(i);
         archivo.close();
       } else {
-        throw std::runtime_error("No se pudo abrir el archivo");
+        //throw std::runtime_error("No se pudo abrir el archivo");
       }
   }
 }
