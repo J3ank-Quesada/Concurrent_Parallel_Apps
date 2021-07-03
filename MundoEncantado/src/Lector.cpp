@@ -16,7 +16,7 @@ void Lector::lectorTrabajo(std::string nombreArchivo,
     }
     archivo.close();
   } else {
-    throw std::runtime_error("Archivo no encontrado");
+    //throw std::runtime_error("Archivo no encontrado");
   }
 }
 
@@ -47,6 +47,6 @@ void Lector::lectorMapa(std::string nombreArchivo,
       }
     }
   } else {
-    throw std::runtime_error("Archivo no encontrado");
+    //throw std::runtime_error("Archivo no encontrado");
   }
 }
