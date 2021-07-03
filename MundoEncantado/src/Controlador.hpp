@@ -12,7 +12,7 @@ std::vector<MapaMagico*> *islas;
 public:
     Controlador();
     ~Controlador();
-    void iniciar(std::string nombreArchivo);
+    void iniciar(std::string nombreArchivo, std::string ruta);
     void liberarMemoria();
     bool crearDirectorio();
 };

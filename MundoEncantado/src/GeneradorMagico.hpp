@@ -14,7 +14,7 @@ class GeneradorMagico {
  public:
   GeneradorMagico();
   ~GeneradorMagico(){};
-  std::vector<MapaMagico*>* obtenerIslas(std::string nombreArchivo);
+  std::vector<MapaMagico*>* obtenerIslas(std::string nombreArchivo, std::string ruta);
 };
 
 #endif // GENERADORMAGICO_H_

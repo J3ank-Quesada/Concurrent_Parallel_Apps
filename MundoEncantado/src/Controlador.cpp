@@ -11,9 +11,9 @@ Controlador::Controlador(){
 Controlador::~Controlador(){
 
 }
-void Controlador::iniciar(std::string nombreArchivo){
+void Controlador::iniciar(std::string nombreArchivo, std::string ruta){
     GeneradorMagico generador;
-    this->islas = generador.obtenerIslas(nombreArchivo);
+    this->islas = generador.obtenerIslas(nombreArchivo,ruta);
     EspejoMagico clarividente(islas);
     clarividente.verDestino();
     Oraculo oraculo;

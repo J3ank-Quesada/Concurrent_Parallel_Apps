@@ -2,8 +2,11 @@
 #include "MapaMagico.hpp"
 
 void Lector::lectorTrabajo(std::string nombreArchivo,
-  std::vector<Trabajo>* trabajos) {
-  std::ifstream archivo(nombreArchivo);
+  std::vector<Trabajo>* trabajos,std::string ruta) {
+    std::string nombre ="";
+    nombre+= ruta;
+    nombre+=nombreArchivo;
+  std::ifstream archivo(nombre);
   if (archivo.is_open()) {
     std::string linea;
     while (getline(archivo, linea)) {
@@ -21,9 +24,12 @@ void Lector::lectorTrabajo(std::string nombreArchivo,
 }
 
 void Lector::lectorMapa(std::string nombreArchivo,
-      MapaMagico* mapaMagico) {
+      MapaMagico* mapaMagico,std::string ruta) {
+  std::string nombre ="";
+  nombre+= ruta;
+  nombre+=nombreArchivo;
   std::ifstream archivo;
-  archivo.open(nombreArchivo);
+  archivo.open(nombre);
   size_t numFilas;
   size_t numColumnas;
   if (archivo.is_open()) {

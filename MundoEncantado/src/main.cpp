@@ -2,12 +2,19 @@
 #include <string>
 
 int main(int argc, char* argv[]) {
-  std::string nombreArchivo;
+  int estado = EXIT_SUCCESS;
+  std::string nombreArchivo = "";
+  std::string ruta="";
   Controlador controlador;
-  if(argc == 2){
+  if(argc == 3){
     nombreArchivo = argv[1];
+    ruta = argv[2];
   }
-  controlador.iniciar(nombreArchivo);
-  return 0;
+  if(ruta == "" || nombreArchivo == ""){
+    estado = EXIT_FAILURE;
+  }else{
+    controlador.iniciar(nombreArchivo,ruta);
+  }
+  return estado;
 }
 
