@@ -9,13 +9,11 @@ VisorFuturo::~VisorFuturo(){
 
 void VisorFuturo::revisarMapa(MapaMagico* mapa){
   alistarCopia(mapa->mapa);
-  imprimirMatrizMensaje("Matriz entrante ", mapa->mapa);
   for(size_t f = 0 ; f <mapa->mapa.size();f++){
     for(size_t c=0; c <mapa->mapa[0].size(); c++){
       evaluarReglas(f,c,mapa);
     }
   }
-  imprimirMatrizMensaje("Matriz resultante guardada ", mapa->mapa);
   ++mapa->numeroActual;
 }
 
