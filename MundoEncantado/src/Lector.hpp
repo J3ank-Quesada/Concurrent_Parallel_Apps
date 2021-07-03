@@ -11,14 +11,12 @@ class Lector{
   
   public:
 
-  vector<Trabajo> trabajos;
+  std::vector<Trabajo> trabajos;
 
   void lectorTrabajo();
-  void lectorMapa();
+  std::vector<std::vector<char>> lectorMapa(std::string nombreArchivo);
   std::string separar(std::string);
   int separarNumero(std::string);
-  int getFirstDim(std::string);
-  int getSecondDim(std::string);
 };
 
 #endif  // LECTOR_H_

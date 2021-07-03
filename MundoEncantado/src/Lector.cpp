@@ -25,31 +25,6 @@ int Lector::separarNumero(std::string linea)
   return num;
 }
 
-int Lector::getFirstDim(std::string linea){
-  std::string numero;
-
-  int pos = linea.find_first_of(" ");
-  for (int i = 0; i < pos; i++)
-  {
-    numero += linea[i];
-  }
-  int num = stoi(numero);
-  return num;
-}
-
-int Lector::getSecondDim(std::string linea){
-  std::string numero;
-
-  int pos = linea.find_first_of(" ") +1;
-  for (int i = pos; i <= linea.length(); i++)
-  {
-    numero += linea[i];
-  }
-  int num = stoi(numero);
-  return num;
-}
-
-
 void Lector::lectorTrabajo()
 {
   string myText;
@@ -73,39 +48,32 @@ void Lector::lectorTrabajo()
     }
 }
 
-void Lector::lectorMapa(){
-  string myText;
-  string fileName;
-  int contador = 0;
-  int ini = 0;
-
-  //TODO pasarle los files de job
-
-  cout << "Ruta del mapa\n";
-  cin >> fileName;
-
-  ifstream MyReadFile(fileName);  // "../input/map001.txt"
-
-  if (MyReadFile.is_open())
-  {
-    while (getline(MyReadFile, myText))
-    {
-      if (ini  == contador){
-        cout << "Dimensiones" << endl;
-        cout << getFirstDim(myText) << endl;
-        cout << getSecondDim(myText) << endl;
-      } else {
-        if (int index = 1 == contador){
-        cout << "Cantidad columnas" << endl;
-        cout << myText.size() << "\n";
-        }
+std::vector<std::vector<char>> Lector::lectorMapa(std::string nombreArchivo) {
+  std::vector<std::vector<char>> matriz;
+  std::ifstream archivo;
+  archivo.open(nombreArchivo);
+  int numFilas;
+  int numColumnas;
+  if (archivo.is_open()) {
+    std::string linea;
+    // Se lee la primera linea
+    std::getline(archivo, linea);
+    int posEspacio = linea.find(' ');
+    // Obtiene numero de filas y columnas
+    numFilas = stoi(linea.substr(0, posEspacio));
+    numColumnas = stoi(linea.substr(posEspacio + 1));
+    int contLineas = 0;
+    while (std::getline(archivo, linea) && contLineas < numFilas) {
+      if (linea.length() >= numColumnas) {
+        // Agrega el string a la matriz mapa
+        std::vector<char> vector(linea.begin(), linea.end());
+        matriz.push_back(vector);
+        // Siguiente linea
+        ++contLineas;
       }
-      contador++;
     }
-      cout << "Cantidad filas" << endl;
-      cout << contador-1 << endl; //columnas
-      MyReadFile.close();
   } else {
-    cout << "No se pudo abrir" << endl; 
-    }
+    throw std::runtime_error("Archivo no encontrado");
+  }
+  return matriz;
 }

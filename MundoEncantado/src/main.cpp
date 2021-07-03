@@ -6,7 +6,7 @@ int main(){
   Trabajo trabajo;
   Lector lector;
   //lector.lectorTrabajo();
-  lector.lectorMapa();
+  lector.lectorMapa("map000.txt");
 
   return 0;
 }
