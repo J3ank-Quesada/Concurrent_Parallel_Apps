@@ -1,13 +1,13 @@
-#include "GeneradorMagico.hpp"
-#include <iostream>
+#include "Controlador.hpp"
+#include <string>
 
-int main() {
-  GeneradorMagico generador;
-  
-  std::vector<MapaMagico>* mapas = generador.obtenerIslas("job001.txt");
-  for(size_t i=0; i<mapas->size(); i++) {
-    mapas->at(i).procesarMapaActual();
-    std::cout<<mapas->at(i);
+int main(int argc, char* argv[]) {
+  std::string nombreArchivo;
+  Controlador controlador;
+  if(argc == 2){
+    nombreArchivo = argv[1];
   }
+  controlador.iniciar(nombreArchivo);
+  return 0;
 }
 

@@ -1,5 +1,4 @@
 #include "EspejoMagico.hpp"
-
 EspejoMagico::EspejoMagico(std::vector<MapaMagico>* islas){
   this->islas = islas;
 }
