@@ -10,13 +10,12 @@ class Trabajo
 {
 private:
 public:
-  Trabajo(){}
-  ~Trabajo(){}
-  std::string separar(std::string);
-  std::string separarNumero(std::string);
-
-  int64_t midnigths;
+  int midnigths;
   std::string fileNameMap;
+  Trabajo();
+  Trabajo(int midnigths, std::string fileNameMap);
+  ~Trabajo();
+  
 };
 
 #endif  // TRABAJO_H_

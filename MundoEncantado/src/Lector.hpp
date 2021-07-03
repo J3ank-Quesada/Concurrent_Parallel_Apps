@@ -8,8 +8,17 @@
 #include "Trabajo.hpp"
 
 class Lector{
-    public:
-    void lector();
+  
+  public:
+
+  vector<Trabajo> trabajos;
+
+  void lectorTrabajo();
+  void lectorMapa();
+  std::string separar(std::string);
+  int separarNumero(std::string);
+  int getFirstDim(std::string);
+  int getSecondDim(std::string);
 };
 
 #endif  // LECTOR_H_
