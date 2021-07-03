@@ -1,12 +1,13 @@
-#include "Lector.hpp"
+#include "GeneradorMagico.hpp"
+#include <iostream>
+
 int main() {
-  Trabajo trabajo;
-  Lector lector;
-  std::vector<Trabajo> trabajos;
-  lector.lectorTrabajo("job001.txt", &trabajos);
-  for (size_t f = 0; f < trabajos.size(); f++) {
-    std::cout << trabajos[f].getNombreMapa() << " "
-      << trabajos[f].getNumMidnights() << std::endl;
+  GeneradorMagico generador;
+  
+  std::vector<MapaMagico>* mapas = generador.obtenerIslas("job001.txt");
+  for(size_t i=0; i<mapas->size(); i++) {
+    mapas->at(i).procesarMapaActual();
+    std::cout<<mapas->at(i);
   }
 }
 

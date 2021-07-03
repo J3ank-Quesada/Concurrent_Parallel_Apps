@@ -1,4 +1,5 @@
 #include "Lector.hpp"
+#include "MapaMagico.hpp"
 
 void Lector::lectorTrabajo(std::string nombreArchivo,
   std::vector<Trabajo>* trabajos) {
@@ -20,7 +21,7 @@ void Lector::lectorTrabajo(std::string nombreArchivo,
 }
 
 void Lector::lectorMapa(std::string nombreArchivo,
-      std::vector<std::vector<char>>* mapa) {
+      MapaMagico* mapaMagico) {
   std::ifstream archivo;
   archivo.open(nombreArchivo);
   int numFilas;
@@ -33,12 +34,14 @@ void Lector::lectorMapa(std::string nombreArchivo,
     // Obtiene numero de filas y columnas
     numFilas = stoi(linea.substr(0, posEspacio));
     numColumnas = stoi(linea.substr(posEspacio + 1));
+    mapaMagico->setTamanioMapa(numFilas, numColumnas);
     int contLineas = 0;
     while (std::getline(archivo, linea) && contLineas < numFilas) {
       if (linea.length() >= numColumnas) {
         // Agrega el string a la matriz mapa
-        std::vector<char> vector(linea.begin(), linea.end());
-        mapa->push_back(vector);
+        for (size_t j = 0; j < mapaMagico->mapa[0].size(); j++) {
+          mapaMagico->mapa[contLineas][j] = linea[j];
+        }
         // Siguiente linea
         ++contLineas;
       }
