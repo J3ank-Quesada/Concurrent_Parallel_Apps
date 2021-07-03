@@ -6,13 +6,14 @@
 #include <vector>
 #include <string>
 #include "Trabajo.hpp"
+class MapaMagico;
 
 class Lector{
  public:
   void lectorTrabajo(std::string nombreArchivo,
     std::vector<Trabajo>* trabajos);
   void lectorMapa(std::string nombreArchivo,
-    std::vector<std::vector<char>>*);
+    MapaMagico* mapaMagico);
 };
 
 #endif  // LECTOR_H_

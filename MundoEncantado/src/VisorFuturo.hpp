@@ -9,20 +9,20 @@
 class VisorFuturo
 {
   private:
-  MapaMagico copia;
-  void evaluarInundacion(int f, int c);
-  void evaluarSequia(int f, int c);
-  void evaluarReforestacion(int f, int c);
-  void evaluarHacimiento(int f, int c);
+  std::vector<std::vector<char>> copia;
+  void evaluarInundacion(int f, int c,MapaMagico* mapa);
+  void evaluarSequia(int f, int c,MapaMagico* mapa);
+  void evaluarReforestacion(int f, int c,MapaMagico* mapa);
+  void evaluarHacimiento(int f, int c,MapaMagico* mapa);
   int examinarCelda(int f, int c, char encontrar);
   bool verificarPosicion(int f, int c);
-  MapaMagico* original;
-  void evaluarReglas(int f, int c);
+  void evaluarReglas(int f, int c,MapaMagico* mapa);
   public:
   VisorFuturo();
-  VisorFuturo(MapaMagico* mapa);
   ~VisorFuturo();
-  void revisarMapa();
+  void revisarMapa(MapaMagico* mapa);
+  void alistarCopia(std::vector<std::vector<char>> original);
+  void imprimirMatrizMensaje(std::string mensaje,std::vector<std::vector<char>> matriz);
 };
 
 #endif  // VISOR_FUTURO_H_

@@ -1,4 +1,5 @@
 #include "Lector.hpp"
+#include "MapaMagico.hpp"
 
 void Lector::lectorTrabajo(std::string nombreArchivo,
   std::vector<Trabajo>* trabajos) {
@@ -15,16 +16,16 @@ void Lector::lectorTrabajo(std::string nombreArchivo,
     }
     archivo.close();
   } else {
-    throw std::runtime_error("Archivo no encontrado");
+    //throw std::runtime_error("Archivo no encontrado");
   }
 }
 
 void Lector::lectorMapa(std::string nombreArchivo,
-      std::vector<std::vector<char>>* mapa) {
+      MapaMagico* mapaMagico) {
   std::ifstream archivo;
   archivo.open(nombreArchivo);
-  int numFilas;
-  int numColumnas;
+  size_t numFilas;
+  size_t numColumnas;
   if (archivo.is_open()) {
     std::string linea;
     // Se lee la primera linea
@@ -33,17 +34,19 @@ void Lector::lectorMapa(std::string nombreArchivo,
     // Obtiene numero de filas y columnas
     numFilas = stoi(linea.substr(0, posEspacio));
     numColumnas = stoi(linea.substr(posEspacio + 1));
-    int contLineas = 0;
+    mapaMagico->setTamanioMapa(numFilas, numColumnas);
+    size_t contLineas = 0;
     while (std::getline(archivo, linea) && contLineas < numFilas) {
       if (linea.length() >= numColumnas) {
         // Agrega el string a la matriz mapa
-        std::vector<char> vector(linea.begin(), linea.end());
-        mapa->push_back(vector);
+        for (size_t j = 0; j < mapaMagico->mapa[0].size(); j++) {
+          mapaMagico->mapa[contLineas][j] = linea[j];
+        }
         // Siguiente linea
         ++contLineas;
       }
     }
   } else {
-    throw std::runtime_error("Archivo no encontrado");
+    //throw std::runtime_error("Archivo no encontrado");
   }
 }

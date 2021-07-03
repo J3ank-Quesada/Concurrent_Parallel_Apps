@@ -1,12 +1,13 @@
-#include "Lector.hpp"
-int main() {
-  Trabajo trabajo;
-  Lector lector;
-  std::vector<Trabajo> trabajos;
-  lector.lectorTrabajo("job001.txt", &trabajos);
-  for (size_t f = 0; f < trabajos.size(); f++) {
-    std::cout << trabajos[f].getNombreMapa() << " "
-      << trabajos[f].getNumMidnights() << std::endl;
+#include "Controlador.hpp"
+#include <string>
+
+int main(int argc, char* argv[]) {
+  std::string nombreArchivo;
+  Controlador controlador;
+  if(argc == 2){
+    nombreArchivo = argv[1];
   }
+  controlador.iniciar(nombreArchivo);
+  return 0;
 }
 

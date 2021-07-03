@@ -2,14 +2,17 @@
 #include <iostream>
 
 MapaMagico::MapaMagico(){
+  this->numeroActual = 0;
 }
 
 MapaMagico::MapaMagico(int f, int c){
+  this->numeroActual = 0;
   setTamanioMapa(f,c);
 }
 
 
 void MapaMagico::setTamanioMapa(int f, int c){
+  
   this->mapa.resize(f);
   for(size_t i=0; i<this->mapa.size(); i++){
     mapa[i].resize(c);
@@ -26,13 +29,13 @@ std::ostream& operator << (std::ostream& ostream,
 void MapaMagico::procesarMapaActual(){
   std::string fila = "";
   this->resultados.push_back(std::to_string(this->numeroActual));
-  this->resultados.push_back(":\n");
-  for(size_t f=0; f<mapa.size();f++){
+  fila += ":\n";
+  for(size_t f=0; f< this->mapa.size();f++){
     for(size_t c=0; c< this->mapa[0].size(); c++){
       fila += this->mapa[f][c];
     }
+    fila += "\n";
     this->resultados.push_back(fila);
-    this->resultados.push_back("\n");
     fila = "";
   }
   this->resultados.push_back("\n");
