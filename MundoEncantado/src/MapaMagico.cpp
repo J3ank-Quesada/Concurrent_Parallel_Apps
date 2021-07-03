@@ -15,18 +15,43 @@ void MapaMagico::setTamanioMapa(int f, int c){
     mapa[i].resize(c);
   }
 }
-void MapaMagico::printMe(){
-  for(size_t f=0; f<this->mapa.size();f++){
-    for(size_t c=0; c<this->mapa[0].size(); c++){
-      std::cout<<this->mapa[f][c];
-    }
-    std::cout<<std::endl;
+std::ostream& operator << (std::ostream& ostream,
+    const MapaMagico& mapaMagico){
+  for(size_t i =0 ; i < mapaMagico.resultados.size();i++){
+    ostream << mapaMagico.resultados[i];
   }
+  return ostream;
 }
+
+void MapaMagico::procesarMapaActual(){
+  std::string fila = "";
+  this->resultados.push_back(std::to_string(this->numeroActual));
+  this->resultados.push_back(":\n");
+  for(size_t f=0; f<mapa.size();f++){
+    for(size_t c=0; c< this->mapa[0].size(); c++){
+      fila += this->mapa[f][c];
+    }
+    this->resultados.push_back(fila);
+    this->resultados.push_back("\n");
+    fila = "";
+  }
+  this->resultados.push_back("\n");
+}
+
+
 void MapaMagico::rellenarCaracter(char caracter){
   for(size_t f=0; f<mapa.size();f++){
     for(size_t c=0; c< this->mapa[0].size(); c++){
       this->mapa[f][c] = caracter;
     }
   }
+}
+
+MapaMagico& MapaMagico::operator = (const MapaMagico &otro){
+  this->mapa = otro.mapa;
+  this->miNombre = otro.miNombre;
+  this->numeroActual = otro.numeroActual;
+  this->numeroIteraciones = otro.numeroIteraciones;
+  this->resultados = otro.resultados;
+  return *this;
 }

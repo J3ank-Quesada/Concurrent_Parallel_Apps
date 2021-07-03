@@ -1,5 +1,4 @@
 #include "Lector.hpp"
-
 int main() {
   Trabajo trabajo;
   Lector lector;
@@ -9,6 +8,5 @@ int main() {
     std::cout << trabajos[f].getNombreMapa() << " "
       << trabajos[f].getNumMidnights() << std::endl;
   }
-  return 0;
 }
 
