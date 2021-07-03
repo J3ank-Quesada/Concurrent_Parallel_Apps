@@ -9,13 +9,13 @@
 class Trabajo
 {
 private:
+  std::string nombreMapa;
+  int numMidnights;
 public:
-  int midnigths;
-  std::string fileNameMap;
   Trabajo();
-  Trabajo(int midnigths, std::string fileNameMap);
+  Trabajo(std::string nombreMapa, int numMidnights);
   ~Trabajo();
-  
+  std::string getNombreMapa();
+  int getNumMidnights();
 };
-
 #endif  // TRABAJO_H_

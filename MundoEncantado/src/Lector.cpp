@@ -1,55 +1,26 @@
 #include "Lector.hpp"
 
-using namespace std;
-
-std::string Lector::separar(std::string linea)
-{
-  std::string nombre;
-  int numero = linea.find_first_of(" ");
-  for (int i = 0; i <= numero; i++)
-  {
-    nombre += linea[i];
-  }
-  return nombre;
-}
-
-int Lector::separarNumero(std::string linea)
-{
-  std::string numero;
-  int pos = linea.find_first_of(" ")+1;
-  for (int i = pos; i <= linea.length(); i++)
-  {
-    numero += linea[i];
-  }
-  int num = stoi(numero);
-  return num;
-}
-
-void Lector::lectorTrabajo()
-{
-  string myText;
-  string fileName;
-
-  cout << "Ruta del trabajo\n";
-  cin >> fileName;
-
-  ifstream MyReadFile(fileName);
-
-  if (MyReadFile.is_open())
-  {
-    while (getline(MyReadFile, myText))
-    {
-      Trabajo nuevoTrabajo(separarNumero(myText),separar(myText));
-      trabajos.push_back(nuevoTrabajo);
+void Lector::lectorTrabajo(std::string nombreArchivo,
+  std::vector<Trabajo>* trabajos) {
+  std::ifstream archivo(nombreArchivo);
+  if (archivo.is_open()) {
+    std::string linea;
+    while (getline(archivo, linea)) {
+      int posEspacio = linea.find(' ');
+      // Obtiene nombreMapa y numMidnights
+      std::string nombreMapa = linea.substr(0, posEspacio);
+      int numMidnights = stoi(linea.substr(posEspacio + 1));
+      Trabajo nuevoTrabajo(nombreMapa, numMidnights);
+      trabajos->push_back(nuevoTrabajo);
     }
-      MyReadFile.close();
+    archivo.close();
   } else {
-    cout << "No se pudo abrir" << endl; 
-    }
+    throw std::runtime_error("Archivo no encontrado");
+  }
 }
 
-std::vector<std::vector<char>> Lector::lectorMapa(std::string nombreArchivo) {
-  std::vector<std::vector<char>> matriz;
+void Lector::lectorMapa(std::string nombreArchivo,
+      std::vector<std::vector<char>>* mapa) {
   std::ifstream archivo;
   archivo.open(nombreArchivo);
   int numFilas;
@@ -67,7 +38,7 @@ std::vector<std::vector<char>> Lector::lectorMapa(std::string nombreArchivo) {
       if (linea.length() >= numColumnas) {
         // Agrega el string a la matriz mapa
         std::vector<char> vector(linea.begin(), linea.end());
-        matriz.push_back(vector);
+        mapa->push_back(vector);
         // Siguiente linea
         ++contLineas;
       }
@@ -75,5 +46,4 @@ std::vector<std::vector<char>> Lector::lectorMapa(std::string nombreArchivo) {
   } else {
     throw std::runtime_error("Archivo no encontrado");
   }
-  return matriz;
 }

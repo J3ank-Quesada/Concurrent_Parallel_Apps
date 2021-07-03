@@ -8,15 +8,11 @@
 #include "Trabajo.hpp"
 
 class Lector{
-  
-  public:
-
-  std::vector<Trabajo> trabajos;
-
-  void lectorTrabajo();
-  std::vector<std::vector<char>> lectorMapa(std::string nombreArchivo);
-  std::string separar(std::string);
-  int separarNumero(std::string);
+ public:
+  void lectorTrabajo(std::string nombreArchivo,
+    std::vector<Trabajo>* trabajos);
+  void lectorMapa(std::string nombreArchivo,
+    std::vector<std::vector<char>>*);
 };
 
 #endif  // LECTOR_H_

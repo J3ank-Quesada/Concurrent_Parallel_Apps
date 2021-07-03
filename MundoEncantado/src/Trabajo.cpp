@@ -1,10 +1,19 @@
 #include "Trabajo.hpp"
-Trabajo::Trabajo(){
-  
+
+Trabajo::Trabajo() {
 }
-Trabajo::Trabajo(int midnigths, std::string fileNameMap){
-  this->midnigths = midnigths;
-  this->fileNameMap = fileNameMap;
+Trabajo::Trabajo(std::string nombreMapa, int numMidnights) {
+  this->nombreMapa = nombreMapa;
+  this->numMidnights = numMidnights;
 }
 
-Trabajo::~Trabajo(){}
+Trabajo::~Trabajo() {
+}
+
+std::string Trabajo::getNombreMapa() {
+  return this->nombreMapa;
+}
+
+int Trabajo::getNumMidnights() {
+  return this->numMidnights;
+}
