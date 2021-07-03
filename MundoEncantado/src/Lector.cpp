@@ -24,8 +24,8 @@ void Lector::lectorMapa(std::string nombreArchivo,
       MapaMagico* mapaMagico) {
   std::ifstream archivo;
   archivo.open(nombreArchivo);
-  int numFilas;
-  int numColumnas;
+  size_t numFilas;
+  size_t numColumnas;
   if (archivo.is_open()) {
     std::string linea;
     // Se lee la primera linea
@@ -35,7 +35,7 @@ void Lector::lectorMapa(std::string nombreArchivo,
     numFilas = stoi(linea.substr(0, posEspacio));
     numColumnas = stoi(linea.substr(posEspacio + 1));
     mapaMagico->setTamanioMapa(numFilas, numColumnas);
-    int contLineas = 0;
+    size_t contLineas = 0;
     while (std::getline(archivo, linea) && contLineas < numFilas) {
       if (linea.length() >= numColumnas) {
         // Agrega el string a la matriz mapa
