@@ -1,6 +1,7 @@
 #include "Controlador.hpp"
 #include "GeneradorMagico.hpp"
 #include "EspejoMagico.hpp"
+#include "Oraculo.hpp"
 
 Controlador::Controlador(){
 
@@ -13,5 +14,6 @@ void Controlador::iniciar(std::string nombreArchivo){
     this->islas = generador.obtenerIslas(nombreArchivo);
     EspejoMagico clarividente(islas);
     clarividente.verDestino();
-    //Llamar al escritor
+    Oraculo oraculo;
+    oraculo.ecribirSalida(islas);
 }
