@@ -18,7 +18,9 @@ class MapaMagico{
     void setTamanioMapa(int f, int c);
     void rellenarCaracter(char caracter);
     void procesarMapaActual();
+    MapaMagico& operator = (const MapaMagico &otro);
     friend std::ostream& operator << (std::ostream& ostream,
                                     const MapaMagico& mapaMagico);
+
 };
 #endif  // MAPAMAGICO_H_

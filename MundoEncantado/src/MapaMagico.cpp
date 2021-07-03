@@ -20,6 +20,7 @@ std::ostream& operator << (std::ostream& ostream,
   for(size_t i =0 ; i < mapaMagico.resultados.size();i++){
     ostream << mapaMagico.resultados[i];
   }
+  return ostream;
 }
 
 void MapaMagico::procesarMapaActual(){
@@ -32,6 +33,7 @@ void MapaMagico::procesarMapaActual(){
     }
     this->resultados.push_back(fila);
     this->resultados.push_back("\n");
+    fila = "";
   }
   this->resultados.push_back("\n");
 }
@@ -43,4 +45,13 @@ void MapaMagico::rellenarCaracter(char caracter){
       this->mapa[f][c] = caracter;
     }
   }
+}
+
+MapaMagico& MapaMagico::operator = (const MapaMagico &otro){
+  this->mapa = otro.mapa;
+  this->miNombre = otro.miNombre;
+  this->numeroActual = otro.numeroActual;
+  this->numeroIteraciones = otro.numeroIteraciones;
+  this->resultados = otro.resultados;
+  return *this;
 }
