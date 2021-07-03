@@ -14,5 +14,6 @@ public:
     ~Controlador();
     void iniciar(std::string nombreArchivo);
     void liberarMemoria();
+    bool crearDirectorio();
 };
 #endif  // CONTROLADOR_H_

@@ -12,6 +12,7 @@ LINTFILTERS=$\
 BIN_DIR=bin
 OBJ_DIR=build
 SRC_DIR=src
+OUTPUT_DIR=Salidas
 
 DIRS=$(shell find $(SRC_DIR) -type d)
 APPNAME=$(shell basename $(shell pwd))
@@ -19,7 +20,7 @@ HEADERS=$(wildcard $(DIRS:%=%/*.hpp))
 SOURCES=$(wildcard $(DIRS:%=%/*.cpp))
 OBJECTS=$(SOURCES:src/%.cpp=build/%.o)
 INCLUDE=$(DIRS:%=-I%)
-IGNORES=$(BIN_DIR) $(OBJ_DIR)
+IGNORES=$(BIN_DIR) $(OBJ_DIR) $(OUTPUT_DIR)
 EXEFILE=$(BIN_DIR)/$(APPNAME)
 APPARGS=10 3 100 200 50
 
