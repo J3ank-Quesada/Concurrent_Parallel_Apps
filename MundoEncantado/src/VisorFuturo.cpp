@@ -104,8 +104,6 @@ void VisorFuturo::alistarCopia(std::vector<std::vector<char>> original){
       copia[i][j] = original[i][j];
     }
   }
-  imprimirMatrizMensaje("Matriz copia ",copia);
-
 }
 
 void VisorFuturo::imprimirMatrizMensaje(std::string mensaje,std::vector<std::vector<char>> matriz){
