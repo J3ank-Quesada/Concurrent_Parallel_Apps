@@ -1,7 +1,7 @@
 CXX=g++
 #DEFS=-DSIMULATION
 DEFS=-DWEBSERVER
-FLAGS=$(strip -Wall -Wextra -std=gnu++2a $(DEFS))
+FLAGS=$(strip -Wall -Wextra $(DEFS))
 LIBS=-pthread -std=c++11
 LINTFILTERS=$\
 	-build/c++11,$\
