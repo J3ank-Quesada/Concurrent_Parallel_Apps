@@ -10,7 +10,7 @@ VisorFuturo::~VisorFuturo(){
 
 void VisorFuturo::revisarMapa(MapaMagico* mapa){
   alistarCopia(mapa->mapa);
-  #pragma omp parallel for num_threads(20) shared(mapa,copia) schedule(dynamic)
+  #pragma omp parallel for num_threads(16) shared(mapa,copia) schedule(dynamic)
   for(size_t f = 0 ; f <mapa->mapa.size();f++){
     for(size_t c=0; c <mapa->mapa[0].size(); c++){
       evaluarReglas(f,c,mapa);

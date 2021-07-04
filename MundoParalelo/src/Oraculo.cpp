@@ -4,26 +4,24 @@
 #include <string>
 #define DIRECTORIO_SALIDA "../Salidas"
 
-void Oraculo::ecribirSalida(
-  std::vector<MapaMagico*>* mapasMagicos) {
-    for (size_t i = 0; i < mapasMagicos->size(); i++) {
-      MapaMagico *mapaMagico = mapasMagicos->at(i);
+void Oraculo::ecribirSalida(MapaMagico *mapa) {
+    for (size_t i = 0; i < mapa->mapa.size(); i++) {
       std::ofstream archivo;
       std::string nombreArchivo;
-      size_t posicionPunto = mapaMagico->miNombre.find_first_of(".");
-      nombreArchivo += mapaMagico->miNombre.substr(0,posicionPunto);
+      size_t posicionPunto = mapa->miNombre.find_first_of(".");
+      nombreArchivo += mapa->miNombre.substr(0,posicionPunto);
       nombreArchivo+= "-";
-      if(mapaMagico->numeroIteraciones < 0){
-        mapaMagico->numeroIteraciones = mapaMagico->numeroIteraciones*(-1);
+      if(mapa->numeroIteraciones < 0){
+        mapa->numeroIteraciones = mapa->numeroIteraciones*(-1);
       }
-      nombreArchivo += std::to_string(mapaMagico->numeroIteraciones);
+      nombreArchivo += std::to_string(mapa->numeroIteraciones);
       nombreArchivo+= ".txt";
       std::string rutaSalida = DIRECTORIO_SALIDA;
       rutaSalida += "/";
       rutaSalida+= nombreArchivo;
       archivo.open(rutaSalida);
       if (archivo.is_open()) {
-        archivo << *mapasMagicos->at(i);
+        archivo << *mapa;
         archivo.close();
       } else {
         //throw std::runtime_error("No se pudo abrir el archivo");

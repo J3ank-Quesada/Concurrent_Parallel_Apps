@@ -58,3 +58,8 @@ MapaMagico& MapaMagico::operator = (const MapaMagico &otro){
   this->resultados = otro.resultados;
   return *this;
 }
+
+void MapaMagico::liberarMemoria(){
+  this->resultados.clear();
+  this->mapa.clear();
+}

@@ -6,7 +6,7 @@
 
 class Oraculo {
  public:
-  void ecribirSalida(std::vector<MapaMagico*>* mapasMagicos);
+  void ecribirSalida(MapaMagico *mapa);
 };
 
 #endif  // ORACULO_H_
