@@ -1,14 +1,12 @@
 #include "EspejoMagico.hpp"
 #include "Oraculo.hpp"
 #include "omp.h"
-EspejoMagico::EspejoMagico(std::vector<MapaMagico>* islas){
-  this->islas = islas;
+EspejoMagico::EspejoMagico(MapaMagico* isla){
+  this->isla = isla;
 }
 
 void EspejoMagico::verDestino(){
-  for(size_t posicion = 0; posicion < islas->size(); posicion++){
-    evaluarIsla(&islas->at(posicion));
-  }   
+    evaluarIsla(isla);   
 }
 void EspejoMagico::evaluarIsla(MapaMagico* isla){
   isla->procesarMapaActual();

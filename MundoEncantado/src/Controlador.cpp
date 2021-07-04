@@ -11,14 +11,19 @@ Controlador::~Controlador(){
 }
 void Controlador::iniciar(std::string nombreArchivo, std::string ruta){
     GeneradorMagico generador;
-    this->islas = generador.obtenerIslas(nombreArchivo,ruta);
+    generador.obtenerIslas(nombreArchivo,ruta,&this->trabajos);
     crearDirectorio();
-    EspejoMagico clarividente(islas);
-    clarividente.verDestino();
-    liberarMemoria();
+    for(size_t iterador = 0 ; iterador < trabajos.size(); iterador++){
+        MapaMagico *islaActual = generador.obtenerMapa(trabajos[iterador].getNombreMapa(),
+            trabajos[iterador].getNumMidnights(), ruta);
+        EspejoMagico clarividente(islaActual);
+        clarividente.verDestino();
+        liberarMemoria(islaActual);
+    }
 }
 
-void Controlador::liberarMemoria(){
+void Controlador::liberarMemoria(MapaMagico *eliminar){
+    delete eliminar;
 }
 
 void Controlador::crearDirectorio(){

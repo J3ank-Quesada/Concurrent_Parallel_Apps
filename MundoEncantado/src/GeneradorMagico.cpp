@@ -5,15 +5,15 @@ GeneradorMagico::GeneradorMagico() {
   this->lector = Lector();
 }
 
-std::vector<MapaMagico>* GeneradorMagico::obtenerIslas(std::string nombreArchivo, std::string ruta) {
-  lector.lectorTrabajo(nombreArchivo, &trabajos,ruta);
-  for (size_t indice = 0; indice < trabajos.size(); indice++) {
-    Trabajo trabajo = trabajos[indice];
-    MapaMagico mapaMagico;
-    mapaMagico.miNombre = trabajos[indice].getNombreMapa();
-    lector.lectorMapa(trabajo.getNombreMapa(), &mapaMagico,ruta);
-    mapaMagico.numeroIteraciones = trabajo.getNumMidnights();
-    mapasMagicos.push_back(mapaMagico);
-  }
-  return &mapasMagicos;
+void GeneradorMagico::obtenerIslas(std::string nombreArchivo, std::string ruta,
+std::vector<Trabajo>* escribir) {
+  lector.lectorTrabajo(nombreArchivo, escribir,ruta);
+}
+
+MapaMagico* GeneradorMagico::obtenerMapa(std::string nombreMapa,int midnights ,std::string ruta){
+  MapaMagico *mapaMagico = new MapaMagico;
+  mapaMagico->miNombre = nombreMapa;
+  lector.lectorMapa(nombreMapa, mapaMagico,ruta);
+  mapaMagico->numeroIteraciones = midnights;
+  return mapaMagico;
 }
