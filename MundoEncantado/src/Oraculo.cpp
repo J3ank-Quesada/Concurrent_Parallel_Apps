@@ -1,7 +1,13 @@
-#include "Oraculo.hpp"
+/**
+* @copyright 2021 ECCI, Universidad de Costa Rica. All rights reserved
+* @author Hellen Fuentes Artavia <hellen.fuentesartavia@ucr.ac.cr>
+* @author Jean Carlo Quesada Abarca <jean.quesadaabarca@ucr.ac.cr>
+* @author Andrés Zamora Víquez <andres.zamoraviquez@ucr.ac.cr>
+*/
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "Oraculo.hpp"
 #define DIRECTORIO_SALIDA "../Salidas"
 
 void Oraculo::ecribirSalida(MapaMagico *mapa) {
@@ -9,9 +15,9 @@ void Oraculo::ecribirSalida(MapaMagico *mapa) {
       std::ofstream archivo;
       std::string nombreArchivo;
       size_t posicionPunto = mapa->miNombre.find_first_of(".");
-      nombreArchivo += mapa->miNombre.substr(0,posicionPunto);
+      nombreArchivo += mapa->miNombre.substr(0, posicionPunto);
       nombreArchivo+= "-";
-      if(mapa->numeroIteraciones < 0){
+      if (mapa->numeroIteraciones < 0) {
         mapa->numeroIteraciones = mapa->numeroIteraciones*(-1);
       }
       nombreArchivo += std::to_string(mapa->numeroIteraciones);
@@ -24,8 +30,7 @@ void Oraculo::ecribirSalida(MapaMagico *mapa) {
         archivo << *mapa;
         archivo.close();
       } else {
-        //throw std::runtime_error("No se pudo abrir el archivo");
+        // throw std::runtime_error("No se pudo abrir el archivo");
       }
   }
 }
-

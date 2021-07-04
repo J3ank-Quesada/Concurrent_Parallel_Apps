@@ -1,9 +1,15 @@
+/**
+* @copyright 2021 ECCI, Universidad de Costa Rica. All rights reserved
+* @author Hellen Fuentes Artavia <hellen.fuentesartavia@ucr.ac.cr>
+* @author Jean Carlo Quesada Abarca <jean.quesadaabarca@ucr.ac.cr>
+* @author Andrés Zamora Víquez <andres.zamoraviquez@ucr.ac.cr>
+*/
 #include "Lector.hpp"
 #include "MapaMagico.hpp"
 
 void Lector::lectorTrabajo(std::string nombreArchivo,
-  std::vector<Trabajo>* trabajos,std::string ruta) {
-    std::string nombre ="";
+  std::vector<Trabajo>* trabajos, std::string ruta) {
+    std::string nombre = "";
     nombre+= ruta;
     nombre+=nombreArchivo;
   std::ifstream archivo(nombre);
@@ -19,12 +25,12 @@ void Lector::lectorTrabajo(std::string nombreArchivo,
     }
     archivo.close();
   } else {
-    //throw std::runtime_error("Archivo no encontrado");
+    // throw std::runtime_error("Archivo no encontrado");
   }
 }
 
 void Lector::lectorMapa(std::string nombreArchivo,
-      MapaMagico* mapaMagico,std::string ruta) {
+  MapaMagico* mapaMagico, std::string ruta) {
   std::string nombre ="";
   nombre+= ruta;
   nombre+=nombreArchivo;
@@ -53,6 +59,6 @@ void Lector::lectorMapa(std::string nombreArchivo,
       }
     }
   } else {
-    //throw std::runtime_error("Archivo no encontrado");
+    // throw std::runtime_error("Archivo no encontrado");
   }
 }
