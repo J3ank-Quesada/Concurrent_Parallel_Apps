@@ -1,5 +1,6 @@
 #include "Lector.hpp"
 #include "MapaMagico.hpp"
+#include "omp.h"
 
 void Lector::lectorTrabajo(std::string nombreArchivo,
   std::vector<Trabajo>* trabajos,std::string ruta) {
@@ -45,6 +46,7 @@ void Lector::lectorMapa(std::string nombreArchivo,
     while (std::getline(archivo, linea) && contLineas < numFilas) {
       if (linea.length() >= numColumnas) {
         // Agrega el string a la matriz mapa
+        #pragma omp parallel for num_threads(8) default (none) shared(mapaMagico,linea,contLineas) schedule(static)
         for (size_t j = 0; j < mapaMagico->mapa[0].size(); j++) {
           mapaMagico->mapa[contLineas][j] = linea[j];
         }

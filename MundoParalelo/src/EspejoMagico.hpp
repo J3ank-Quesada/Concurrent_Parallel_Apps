@@ -6,10 +6,10 @@
 
 class EspejoMagico{
   private:
-  std::vector<MapaMagico>* islas;
+  MapaMagico* isla;
 
   public:
-  EspejoMagico(std::vector<MapaMagico>* islas);
+  EspejoMagico(MapaMagico* isla);
   void verDestino();
   void evaluarIsla(MapaMagico *isla);
 

@@ -1,5 +1,6 @@
 #include "MapaMagico.hpp"
 #include <iostream>
+#include "omp.h"
 
 MapaMagico::MapaMagico(){
   this->numeroActual = 0;

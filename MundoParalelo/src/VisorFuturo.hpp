@@ -14,7 +14,7 @@ class VisorFuturo
   void evaluarSequia(int f, int c,MapaMagico* mapa);
   void evaluarReforestacion(int f, int c,MapaMagico* mapa);
   void evaluarHacimiento(int f, int c,MapaMagico* mapa);
-  int examinarCelda(int f, int c, char encontrar);
+  bool examinarCelda(int f, int c, char encontrar,int cuantos);
   bool verificarPosicion(int f, int c);
   void evaluarReglas(int f, int c,MapaMagico* mapa);
   public:

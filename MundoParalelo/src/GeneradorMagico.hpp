@@ -8,13 +8,13 @@
 
 class GeneradorMagico {
  private:
-  std::vector<Trabajo> trabajos;
-  std::vector<MapaMagico> mapasMagicos;
+  MapaMagico *procesar;
   Lector lector;
  public:
   GeneradorMagico();
   ~GeneradorMagico(){};
-  std::vector<MapaMagico>* obtenerIslas(std::string nombreArchivo, std::string ruta);
+  void obtenerIslas(std::string nombreArchivo, std::string ruta, std::vector<Trabajo>* escribir);
+  MapaMagico* obtenerMapa(std::string nombreMapa,int midnights ,std::string ruta);
 };
 
 #endif // GENERADORMAGICO_H_
