@@ -21,6 +21,7 @@ class MapaMagico{
     MapaMagico& operator = (const MapaMagico &otro);
     friend std::ostream& operator << (std::ostream& ostream,
                                     const MapaMagico& mapaMagico);
+    void liberarMemoria();
 
 };
 #endif  // MAPAMAGICO_H_

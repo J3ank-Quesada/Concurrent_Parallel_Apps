@@ -7,13 +7,13 @@
 class Controlador
 {
 private:
-std::vector<MapaMagico*> *islas;
+std::vector<MapaMagico> *islas;
     
 public:
-    Controlador();
-    ~Controlador();
-    void iniciar(std::string nombreArchivo, std::string ruta);
-    void liberarMemoria();
-    bool crearDirectorio();
+  Controlador();
+  ~Controlador();
+  void iniciar(std::string nombreArchivo, std::string ruta);
+  void liberarMemoria();
+  void crearDirectorio();
 };
 #endif  // CONTROLADOR_H_

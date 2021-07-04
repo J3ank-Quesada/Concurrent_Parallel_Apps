@@ -1,5 +1,6 @@
 #include "VisorFuturo.hpp"
 #include <iostream>
+#include <omp.h>
 VisorFuturo::VisorFuturo(){
 
 }

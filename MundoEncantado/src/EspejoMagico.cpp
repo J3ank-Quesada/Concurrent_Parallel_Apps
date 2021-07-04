@@ -1,14 +1,18 @@
 #include "EspejoMagico.hpp"
-EspejoMagico::EspejoMagico(std::vector<MapaMagico*>* islas){
+#include "Oraculo.hpp"
+#include "omp.h"
+EspejoMagico::EspejoMagico(std::vector<MapaMagico>* islas){
   this->islas = islas;
 }
+
 void EspejoMagico::verDestino(){
   for(size_t posicion = 0; posicion < islas->size(); posicion++){
-    evaluarIsla(islas->at(posicion));
+    evaluarIsla(&islas->at(posicion));
   }   
 }
 void EspejoMagico::evaluarIsla(MapaMagico* isla){
   isla->procesarMapaActual();
+  Oraculo oraculo;
   VisorFuturo visor;
   // Si en la isla solo se quiere ver el resultado final
   if(isla->numeroIteraciones < 0){
@@ -26,4 +30,6 @@ void EspejoMagico::evaluarIsla(MapaMagico* isla){
       isla->procesarMapaActual();
     }
   }
+  oraculo.ecribirSalida(isla);
+  isla->liberarMemoria();
 }
