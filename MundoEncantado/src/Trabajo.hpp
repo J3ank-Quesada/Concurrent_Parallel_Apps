@@ -46,4 +46,3 @@ class Trabajo {
 };
 
 #endif  // SRC_TRABAJO_HPP_
-

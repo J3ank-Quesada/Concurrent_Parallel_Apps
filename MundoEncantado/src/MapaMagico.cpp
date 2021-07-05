@@ -24,7 +24,7 @@ void MapaMagico::setTamanioMapa(int f, int c) {
     mapa[i].resize(c);
   }
 }
-void MapaMagico::procesarMapaActual(){
+void MapaMagico::procesarMapaActual() {
   Oraculo oraculo;
   std::string fila = "";
   fila += ":\n";
@@ -55,6 +55,6 @@ MapaMagico& MapaMagico::operator = (const MapaMagico &otro) {
   return *this;
 }
 
-void MapaMagico::liberarMemoria(){
+void MapaMagico::liberarMemoria() {
   this->mapa.clear();
 }

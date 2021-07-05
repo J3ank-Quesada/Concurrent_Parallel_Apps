@@ -1,9 +1,15 @@
+/**
+* @copyright 2021 ECCI, Universidad de Costa Rica. All rights reserved
+* @author Hellen Fuentes Artavia <hellen.fuentesartavia@ucr.ac.cr>
+* @author Jean Carlo Quesada Abarca <jean.quesadaabarca@ucr.ac.cr>
+* @author Andrés Zamora Víquez <andres.zamoraviquez@ucr.ac.cr>
+*/
 #include "Lector.hpp"
 #include "MapaMagico.hpp"
-#include "omp.h"
+#include <omp.h>
 
 void Lector::lectorTrabajo(std::string nombreArchivo,
-  std::vector<Trabajo>* trabajos,std::string ruta) {
+  std::vector<Trabajo>* trabajos, std::string ruta) {
     std::string nombre ="";
     nombre+= ruta;
     nombre+=nombreArchivo;
@@ -20,12 +26,12 @@ void Lector::lectorTrabajo(std::string nombreArchivo,
     }
     archivo.close();
   } else {
-    //throw std::runtime_error("Archivo no encontrado");
+    // throw std::runtime_error("Archivo no encontrado");
   }
 }
 
 void Lector::lectorMapa(std::string nombreArchivo,
-      MapaMagico* mapaMagico,std::string ruta) {
+      MapaMagico* mapaMagico, std::string ruta) {
   std::string nombre ="";
   nombre+= ruta;
   nombre+=nombreArchivo;
@@ -46,7 +52,7 @@ void Lector::lectorMapa(std::string nombreArchivo,
     while (std::getline(archivo, linea) && contLineas < numFilas) {
       if (linea.length() >= numColumnas) {
         // Agrega el string a la matriz mapa
-        #pragma omp parallel for num_threads(8) default (none) shared(mapaMagico,linea,contLineas) schedule(static)
+        #pragma omp parallel for num_threads(8) default (none) shared(mapaMagico, linea, contLineas) schedule(static)
         for (size_t j = 0; j < mapaMagico->mapa[0].size(); j++) {
           mapaMagico->mapa[contLineas][j] = linea[j];
         }
@@ -55,6 +61,6 @@ void Lector::lectorMapa(std::string nombreArchivo,
       }
     }
   } else {
-    //throw std::runtime_error("Archivo no encontrado");
+    // throw std::runtime_error("Archivo no encontrado");
   }
 }

@@ -14,10 +14,10 @@ void Oraculo::ecribirSalida(MapaMagico *mapa) {
   std::ofstream archivo;
   std::string nombreArchivo;
   size_t posicionPunto = mapa->miNombre.find_first_of(".");
-  nombreArchivo += mapa->miNombre.substr(0,posicionPunto);
+  nombreArchivo += mapa->miNombre.substr(0, posicionPunto);
   nombreArchivo+= "-";
   int numeroActual = mapa->numeroIteraciones;
-  if(mapa->numeroIteraciones < 0){
+  if (mapa->numeroIteraciones < 0) {
     numeroActual = mapa->numeroIteraciones*(-1);
   }
   nombreArchivo += std::to_string(numeroActual);
@@ -29,8 +29,8 @@ void Oraculo::ecribirSalida(MapaMagico *mapa) {
   if (archivo.is_open()) {
     archivo << mapa->numeroActual;
     archivo << ":\n";
-    for(size_t f=0; f< mapa->mapa.size();f++){
-      for(size_t c=0; c< mapa->mapa[0].size(); c++){
+    for (size_t f = 0; f< mapa->mapa.size(); f++) {
+      for (size_t c = 0; c< mapa->mapa[0].size(); c++) {
         archivo<< mapa->mapa[f][c];
       }
       archivo<< "\n";
@@ -38,7 +38,6 @@ void Oraculo::ecribirSalida(MapaMagico *mapa) {
     archivo<< "\n";
     archivo.close();
   } else {
-    //throw std::runtime_error("No se pudo abrir el archivo");
+    // throw std::runtime_error("No se pudo abrir el archivo");
   }
-  
 }

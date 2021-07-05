@@ -5,7 +5,7 @@
 * @author Andrés Zamora Víquez <andres.zamoraviquez@ucr.ac.cr>
 */
 #include "EspejoMagico.hpp"
-EspejoMagico::EspejoMagico(MapaMagico* isla){
+EspejoMagico::EspejoMagico(MapaMagico* isla) {
   this->isla = isla;
 }
 

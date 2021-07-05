@@ -73,7 +73,7 @@ class MapaMagico{
 
   /**
   * @brief libera la memoria alojada para la creación de las islas
-  * @details se hace un delete para todas las islas creadas
+  * @details se hace un delete para todos los mapas creados
   */
   void liberarMemoria();
 };

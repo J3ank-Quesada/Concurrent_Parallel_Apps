@@ -16,7 +16,7 @@ class Controlador {
   std::vector<Trabajo> trabajos;
 
  public:
-  // controlador y destructor
+  // constructor y destructor
   Controlador();
   ~Controlador();
 
@@ -36,9 +36,7 @@ class Controlador {
   void liberarMemoria(MapaMagico *eliminar);
 
   /**
-  * @brief crea un directorio de salida con los outputs que se obtienen después de procesar uno o varios mapas
-  * @details se crea un archivo por mapa procesado
-  * @return true si el directorio fue creado con éxito, false si no
+  * @brief crea un directorio para guadar los outputs que se obtienen después de procesar uno o varios mapas
   */
   void crearDirectorio();
 };
