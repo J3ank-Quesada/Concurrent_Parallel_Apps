@@ -1,6 +1,4 @@
 #include "EspejoMagico.hpp"
-#include "Oraculo.hpp"
-#include "omp.h"
 EspejoMagico::EspejoMagico(MapaMagico* isla){
   this->isla = isla;
 }
@@ -10,7 +8,6 @@ void EspejoMagico::verDestino(){
 }
 void EspejoMagico::evaluarIsla(MapaMagico* isla){
   isla->procesarMapaActual();
-  Oraculo oraculo;
   VisorFuturo visor;
   // Si en la isla solo se quiere ver el resultado final
   if(isla->numeroIteraciones < 0){
@@ -28,6 +25,5 @@ void EspejoMagico::evaluarIsla(MapaMagico* isla){
       isla->procesarMapaActual();
     }
   }
-  oraculo.ecribirSalida(isla);
   isla->liberarMemoria();
 }

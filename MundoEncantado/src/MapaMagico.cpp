@@ -1,5 +1,6 @@
 #include "MapaMagico.hpp"
 #include <iostream>
+#include "Oraculo.hpp"
 
 MapaMagico::MapaMagico(){
   this->numeroActual = 0;
@@ -18,27 +19,18 @@ void MapaMagico::setTamanioMapa(int f, int c){
     mapa[i].resize(c);
   }
 }
-std::ostream& operator << (std::ostream& ostream,
-    const MapaMagico& mapaMagico){
-  for(size_t i =0 ; i < mapaMagico.resultados.size();i++){
-    ostream << mapaMagico.resultados[i];
-  }
-  return ostream;
-}
-
 void MapaMagico::procesarMapaActual(){
+  Oraculo oraculo;
   std::string fila = "";
-  this->resultados.push_back(std::to_string(this->numeroActual));
   fila += ":\n";
   for(size_t f=0; f< this->mapa.size();f++){
     for(size_t c=0; c< this->mapa[0].size(); c++){
       fila += this->mapa[f][c];
     }
     fila += "\n";
-    this->resultados.push_back(fila);
     fila = "";
   }
-  this->resultados.push_back("\n");
+  oraculo.ecribirSalida(this);
 }
 
 
@@ -55,11 +47,9 @@ MapaMagico& MapaMagico::operator = (const MapaMagico &otro){
   this->miNombre = otro.miNombre;
   this->numeroActual = otro.numeroActual;
   this->numeroIteraciones = otro.numeroIteraciones;
-  this->resultados = otro.resultados;
   return *this;
 }
 
 void MapaMagico::liberarMemoria(){
-  this->resultados.clear();
   this->mapa.clear();
 }
