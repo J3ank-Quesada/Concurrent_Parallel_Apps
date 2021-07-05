@@ -1,7 +1,13 @@
-#include "Oraculo.hpp"
+/**
+* @copyright 2021 ECCI, Universidad de Costa Rica. All rights reserved
+* @author Hellen Fuentes Artavia <hellen.fuentesartavia@ucr.ac.cr>
+* @author Jean Carlo Quesada Abarca <jean.quesadaabarca@ucr.ac.cr>
+* @author Andrés Zamora Víquez <andres.zamoraviquez@ucr.ac.cr>
+*/
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "Oraculo.hpp"
 #define DIRECTORIO_SALIDA "../Salidas"
 
 void Oraculo::ecribirSalida(MapaMagico *mapa) {
@@ -36,4 +42,3 @@ void Oraculo::ecribirSalida(MapaMagico *mapa) {
   }
   
 }
-
