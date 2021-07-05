@@ -7,6 +7,7 @@
 #include <iostream>
 #include <omp.h>
 #include "MapaMagico.hpp"
+#include "Oraculo.hpp"
 
 MapaMagico::MapaMagico() {
   this->numeroActual = 0;
@@ -33,18 +34,8 @@ std::ostream& operator << (std::ostream& ostream,
 }
 
 void MapaMagico::procesarMapaActual() {
-  std::string fila = "";
-  this->resultados.push_back(std::to_string(this->numeroActual));
-  fila += ":\n";
-  for (size_t f = 0; f < this->mapa.size(); f++) {
-    for (size_t c=0; c< this->mapa[0].size(); c++) {
-      fila += this->mapa[f][c];
-    }
-    fila += "\n";
-    this->resultados.push_back(fila);
-    fila = "";
-  }
-  this->resultados.push_back("\n");
+  Oraculo oraculo;
+  oraculo.ecribirSalida(this);
 }
 
 

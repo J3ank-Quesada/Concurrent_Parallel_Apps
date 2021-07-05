@@ -13,7 +13,7 @@
 class Oraculo {
  public:
   /**
-  * @brief crea un output .txt con el resultado de los mapas procesados
+  * @brief crea un output con el resultado de los mapas procesados
   * @details crea una carpeta llamada Salidas y almacena ahí los outputs de cada mapa
   * @param mapa quien conquiene el mapa procesado
   */
