@@ -26,15 +26,6 @@ void MapaMagico::setTamanioMapa(int f, int c) {
 }
 void MapaMagico::procesarMapaActual() {
   Oraculo oraculo;
-  std::string fila = "";
-  fila += ":\n";
-  for (size_t f = 0; f < this->mapa.size(); f++) {
-    for (size_t c = 0; c < this->mapa[0].size(); c++) {
-      fila += this->mapa[f][c];
-    }
-    fila += "\n";
-    fila = "";
-  }
   oraculo.ecribirSalida(this);
 }
 
