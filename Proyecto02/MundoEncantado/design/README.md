@@ -1,11 +1,11 @@
-# Universidad de Costa Rica\
-## Bosque Encantado Serial\
-## Primera fase\
-### Versión 1.0\
-## Diagramas y algoritmos\
-En este documento se hace la discusión sobre el diagrama UML implementado y algoritmos realizados para explicar la funcionalidad del programa.\
+# Universidad de Costa Rica
+## Bosque Encantado Serial
+## Primera fase
+### Versión 1.0
+## Diagramas y algoritmos
+En este documento se hace la discusión sobre el diagrama UML implementado y algoritmos realizados para explicar la funcionalidad del programa.
 
-### Algoritmos\
+### Algoritmos
 El siguiente pseudocódigo corresponde a la clase controlador. Esta es la encargada de inicializar el programa y controlar el proceso a realizar.
 
 ```
@@ -35,7 +35,7 @@ class Controlador{
 ```
 Mediante el método crearDirectorio, se crea un directorio donde serán almacenados los outputs del programa. Por lo que, para iniciar el programa, se crea el directorio y se reciben los trabajos y mapas dentro de él. El trabajo es almacenado en un vector de trabajo que contiene los nombres de los archivos de texto con los mapas y la cantidad de mediasnoches a procesar. Después de eso, cada mapa guardado en el vector de trabajo se extrae y se crea una matriz en MapaMagico con las dimensiones del mapa y su contenido. Por último, llama al método encargado de procesar cada mapa. Después de realizar el proceso libera la memoria alojada para cada mapa.
 
-### Diseño UML\
+### Diseño UML
 
 En el siguiente diagrama de clases, se muestra la interacción entre las clases desarrolladas en el proyecto.
 
