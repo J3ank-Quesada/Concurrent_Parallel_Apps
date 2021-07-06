@@ -18,7 +18,6 @@ class MapaMagico {
   std::string miNombre;
   // matriz
   std::vector<std::vector<char>> mapa;
-  std::vector<std::string> resultados;
   // contructor de clase
   MapaMagico();
 
