@@ -13,14 +13,17 @@ GeneradorMagico::GeneradorMagico() {
 
 void GeneradorMagico::obtenerIslas(std::string nombreArchivo, std::string ruta,
 std::vector<Trabajo>* escribir) {
+  // Obtiene los mapas de un job y los escribe en lo que recibe como parametro
   lector.lectorTrabajo(nombreArchivo, escribir, ruta);
 }
 
 MapaMagico* GeneradorMagico::obtenerMapa(std::string nombreMapa,
   int midnights, std::string ruta) {
+  // Crea un nuevo mapa, para rellenarlo con el archivo que abra
   MapaMagico *mapaMagico = new MapaMagico;
   mapaMagico->miNombre = nombreMapa;
   lector.lectorMapa(nombreMapa, mapaMagico, ruta);
   mapaMagico->numeroIteraciones = midnights;
+  // Devuelve el mapa creado
   return mapaMagico;
 }
