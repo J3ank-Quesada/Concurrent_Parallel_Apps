@@ -6,12 +6,11 @@
 */
 #ifndef SRC_VISORFUTURO_HPP_
 #define SRC_VISORFUTURO_HPP_
-// define el signo representativo de un lago, pradera o arbol dentro de un mapa
 #define LAGO 'l'
 #define PRADERA '-'
 #define ARBOL 'a'
-#include <string>
 #include <vector>
+#include <string>
 #include "MapaMagico.hpp"
 
 class VisorFuturo {
@@ -105,8 +104,8 @@ class VisorFuturo {
   * @param mensaje mensaje que se quiere imprimir para la prueba
   * @param matriz matriz a copiar
   */
-  void imprimirMatrizMensaje(
-    std::string mensaje, std::vector<std::vector<char>> matriz);
+  void imprimirMatrizMensaje(std::string mensaje,
+    std::vector<std::vector<char>> matriz);
 };
 
 #endif  // SRC_VISORFUTURO_HPP_

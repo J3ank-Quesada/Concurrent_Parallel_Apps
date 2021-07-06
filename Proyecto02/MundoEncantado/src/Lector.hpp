@@ -12,12 +12,11 @@
 #include <vector>
 #include <string>
 #include "Trabajo.hpp"
-
 class MapaMagico;
 
 class Lector{
  public:
- /**
+  /**
   * @brief lee un archivo de trabajo y obtiene los nombres de los mapas que debe de procesar el programa y sus midnights
   * @details guarda los datos en un vector de la clase Trabajo
   * @param nombreArchivo nombre del archivo de trabajo que contiene los mapas

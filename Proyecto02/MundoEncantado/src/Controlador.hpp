@@ -13,7 +13,7 @@
 
 class Controlador {
  private:
-  std::vector<Trabajo> trabajos;
+std::vector<Trabajo> trabajos;
 
  public:
   // constructor y destructor
