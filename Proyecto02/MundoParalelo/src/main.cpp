@@ -12,11 +12,12 @@ int main(int argc, char* argv[]) {
   std::string nombreArchivo = "";
   std::string ruta = "";
   Controlador controlador;
+  // debe ser igual a 3
   if (argc == 3) {
     nombreArchivo = argv[1];
     ruta = argv[2];
   }
-  if (ruta == "" || nombreArchivo == "") {
+  if (ruta == "" || nombreArchivo == "" || argc !=3) {
     estado = EXIT_FAILURE;
   } else {
     controlador.iniciar(nombreArchivo, ruta);

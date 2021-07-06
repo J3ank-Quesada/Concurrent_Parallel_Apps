@@ -61,15 +61,6 @@ class MapaMagico {
   MapaMagico& operator = (const MapaMagico &otro);
 
   /**
-  * @brief sobrecarga de operador, manda el resultado del mapa despues de n midnights a la salida que se especifique en el ostream
-  * @param ostream salida a especificar (cout por ejemplo)
-  * @param mapaMagico mapa que se desea obtener
-  * @return ostream la salida especificada
-  */
-  friend std::ostream& operator << (std::ostream& ostream,
-    const MapaMagico& mapaMagico);
-
-  /**
   * @brief libera la memoria alojada para la creación de las islas
   * @details se hace un delete para todos los mapas creados
   */

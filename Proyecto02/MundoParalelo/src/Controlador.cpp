@@ -16,15 +16,21 @@ Controlador::~Controlador() { }
 
 void Controlador::iniciar(std::string nombreArchivo, std::string ruta) {
   GeneradorMagico generador;
+  //  Obtiene los mapas de un job
   generador.obtenerIslas(nombreArchivo, ruta, &this->trabajos);
+  // Crea el directorio de salida si no existe
   crearDirectorio();
+  // Itera sobre los Trabajos (mapas del job)
   for (size_t iterador = 0; iterador < trabajos.size(); iterador++) {
-      MapaMagico *islaActual = generador.obtenerMapa(
-        trabajos[iterador].getNombreMapa(),
-        trabajos[iterador].getNumMidnights(), ruta);
-      EspejoMagico clarividente(islaActual);
-      clarividente.verDestino();
-      liberarMemoria(islaActual);
+    // Trabaja sobre 1 mapa del job, le da dimensiones y rellena la matriz
+    MapaMagico *islaActual = generador.obtenerMapa(
+      trabajos[iterador].getNombreMapa(),
+      trabajos[iterador].getNumMidnights(), ruta);
+      // Ve el destino del mapa despues de n midnights
+    EspejoMagico clarividente(islaActual);
+    clarividente.verDestino();
+    // Libera la memoria que ocupo el mapa
+    liberarMemoria(islaActual);
   }
 }
 

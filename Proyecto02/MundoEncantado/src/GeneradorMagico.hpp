@@ -29,8 +29,8 @@ class GeneradorMagico {
   * @param nombreArchivo el nombre del trabajo a procesar
   * @param ruta la ruta del directorio que contiene el archivo de trabajo y los mapas
   */
-  void obtenerIslas(std::string nombreArchivo,
-    std::string ruta, std::vector<Trabajo>* escribir);
+  void obtenerIslas(std::string nombreArchivo, std::string ruta,
+    std::vector<Trabajo>* escribir);
 
   /**
   * @brief lee el archivo y la ruta del mismo y lo asigna a un mapaMagico

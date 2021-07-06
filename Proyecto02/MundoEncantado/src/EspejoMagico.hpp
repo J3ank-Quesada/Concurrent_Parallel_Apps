@@ -15,16 +15,12 @@ class EspejoMagico{
   MapaMagico* isla;
 
  public:
-  // contructor y destructor de clase
-  EspejoMagico() { }
-  ~EspejoMagico() { }
-
   /**
   * @brief constructor recibe un vector de mapas de islas
   * @details inicializa el parámetro que recibe como islas
   * @param isla el vector de mapas
   */
-  EspejoMagico(MapaMagico* isla);
+  explicit EspejoMagico(MapaMagico* isla);
 
   /**
   * @brief itera sobre las islas y las manda a evaluar al método evaluarIsla

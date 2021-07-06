@@ -10,8 +10,7 @@
 #include <vector>
 #include <string>
 
-
-class MapaMagico{
+class MapaMagico {
  public:
   // varibles publicas
   int numeroIteraciones;
@@ -19,7 +18,6 @@ class MapaMagico{
   std::string miNombre;
   // matriz
   std::vector<std::vector<char>> mapa;
-  std::vector<std::string> resultados;
   // contructor de clase
   MapaMagico();
 
@@ -61,15 +59,6 @@ class MapaMagico{
   * @return this retorna la referencia al mapa que se iguala
   */
   MapaMagico& operator = (const MapaMagico &otro);
-
-  /**
-  * @brief sobrecarga de operador, manda el resultado del mapa despues de n midnights a la salida que se especifique en el ostream
-  * @param ostream salida a especificar (cout por ejemplo)
-  * @param mapaMagico mapa que se desea obtener
-  * @return ostream la salida especificada
-  */
-  friend std::ostream& operator << (std::ostream& ostream,
-                                  const MapaMagico& mapaMagico);
 
   /**
   * @brief libera la memoria alojada para la creación de las islas

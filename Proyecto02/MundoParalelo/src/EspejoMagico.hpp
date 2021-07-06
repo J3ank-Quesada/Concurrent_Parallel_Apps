@@ -20,7 +20,7 @@ class EspejoMagico{
   * @details inicializa el parámetro que recibe como islas
   * @param isla el vector de mapas
   */
-  EspejoMagico(MapaMagico* isla);
+  explicit EspejoMagico(MapaMagico* isla);
 
   /**
   * @brief itera sobre las islas y las manda a evaluar al método evaluarIsla
