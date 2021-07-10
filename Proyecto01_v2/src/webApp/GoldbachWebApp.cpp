@@ -4,16 +4,23 @@
 * @author Andrés Zamora Víquez <andres.zamoraviquez@ucr.ac.cr>
 * @author Hellen Fuentes Artavia <hellen.fuentesartavia@ucr.ac.cr>
 */
+#include <unistd.h>
 #include "GoldbachWebApp.hpp"
 #include <regex>
 #include <iostream>
 
 GoldbachWebApp::GoldbachWebApp() {
   goldbachCalculator = new GoldbachCalculator();
+  this->numberOfCores = 0;
+  this->numberOfCores = sysconf(_SC_NPROCESSORS_ONLN);
+  initializeGoldbachWorkConsumers();
 }
 
 GoldbachWebApp::~GoldbachWebApp() {
   delete this->goldbachCalculator;
+  for(int destroy = 0 ; destroy < numberOfCores; ++destroy){
+    delete goldbachWorkConsumer[destroy]; 
+  }
 }
 
 std::string GoldbachWebApp::parseURI(const std::string &uri) {
@@ -62,19 +69,9 @@ bool GoldbachWebApp::processRequest(
 
   // If it's a valid request
   if (solicitudValida) {
-    GoldbachWork* goldbachWork = new GoldbachWork(parsedUri,
-    request, response);
-    // Devuelve una lista con Numeros de Goldbach (clase para trabajar Goldbach)
-    GoldbachNumbersList* list = goldbachWork->getGoldbachNumbersList();
-    for (int64_t i = 0; i < list->getListSize(); ++i) {
-      // Calcule los numeros de goldbach
-      // Guardeme las respuestas en la lista
-      goldbachCalculator->startGoldbach(list->getGoldbachNumber(i));
-    }
-    // Inyecte los resultados a html.
-    injectHTML(goldbachWork);
+    GoldbachWork goldbachWork(parsedUri,request,response);
+    workForThreads.push(goldbachWork);
   }
-
   return solicitudValida;
 }
 
@@ -104,4 +101,14 @@ void GoldbachWebApp::injectHTML(GoldbachWork* goldbachWork) {
     << "  <hr><p><a href=\"/\">Back</a></p>\n"
     << "</html>\n";
     goldbachWork->response->send();
+}
+
+void GoldbachWebApp::initializeGoldbachWorkConsumers(){
+  goldbachWorkConsumer.resize(numberOfCores);
+  for(int initialize = 0 ; initialize < numberOfCores; ++initialize){
+    goldbachWorkConsumer[initialize] = 
+    new ProdConsGoldbachCalculator(&workForThreads,GoldbachWork(),this);
+    assert(goldbachWorkConsumer[initialize]);
+    goldbachWorkConsumer[initialize]->startThread();
+  }
 }
