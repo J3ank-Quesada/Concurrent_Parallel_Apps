@@ -20,7 +20,6 @@ void ProdConsGoldbachCalculator::setIntancePointers
   this->goldbachWebApp = goldbachWebApp;
 }
 
-
 void ProdConsGoldbachCalculator::consume(const GoldbachWork& goldbachWork) {
   
   GoldbachWork work = goldbachWork;
