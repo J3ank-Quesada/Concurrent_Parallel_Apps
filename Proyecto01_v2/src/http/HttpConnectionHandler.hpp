@@ -10,11 +10,11 @@
 #include "HttpRequest.hpp"
 #include "HttpResponse.hpp"
 
-class WebServer;
+class HttpServer;
 
 class HttpConnectionHandler: public Consumer<Socket> {
  private:
-  WebServer* webServer;
+  HttpServer* httpServer;
 
  public:
   // HttpConnectionHandler contructor
@@ -24,10 +24,10 @@ class HttpConnectionHandler: public Consumer<Socket> {
   * @brief constructor of HttpConnectionHandler
   * @param queue of Work with the data to consume
   * @param empty empty socket (means end of work for the thread)
-  * @param webServer pointer to singleton WebServer class
+  * @param httpServer pointer to httpServer class
   */
   HttpConnectionHandler(Queue<Socket>* queue,
-  const Socket empty, WebServer* webServer);
+  const Socket empty, HttpServer* httpServer);
 
   // HttpConnectionHandler destructor
   ~HttpConnectionHandler() {

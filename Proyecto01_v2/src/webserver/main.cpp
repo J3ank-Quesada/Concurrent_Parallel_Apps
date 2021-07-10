@@ -12,7 +12,7 @@ std::mutex mutexKiller;
 
 void serverKiller(WebServer* web) {
   mutexKiller.lock();
-  web->end();  // end the server
+  web->stop();  // end the server
   mutexKiller.unlock();
 }
 

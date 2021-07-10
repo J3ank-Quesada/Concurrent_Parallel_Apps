@@ -1,13 +1,11 @@
 // Copyright 2021 Jeisson Hidalgo-Cespedes. Universidad de Costa Rica. CC BY 4.0
 
-#include <unistd.h>
+
 #include <cassert>
 #include <iostream>
 #include <regex>
 #include <stdexcept>
 #include <string>
-
-
 #include "NetworkAddress.hpp"
 #include "Socket.hpp"
 #include "WebServer.hpp"
@@ -21,13 +19,10 @@ const char *const usage =
 
 // TODO(you) Make WebServer a singleton class. See the Log class
 WebServer::WebServer() {
-  this->numberThreads = sysconf(_SC_NPROCESSORS_ONLN);
+  this->numberThreads = 0;
 }
 
 WebServer::~WebServer() {
-  for (int index = 0; index < this->connectionQueueCapacity; ++index) {
-    delete consumers[index];
-  }
   delete this->goldbachWebApp;
 }
 
@@ -49,13 +44,7 @@ int WebServer::start(int argc, char *argv[]) {
       std::cout << "web server listening on " << address.getIP()
                 << " port " << address.getPort() << "...\n";
       // Create each consumer
-      this->consumers.resize(this->numberThreads);
-      for (int index = 0; index < this->numberThreads; ++index) {
-        this->consumers[index] =
-         new HttpConnectionHandler(&queue, Socket(), this);
-        assert(this->consumers[index]);
-        this->consumers[index]->startThread();
-      }
+      this->initializeSoketsConsumers(numberThreads);
       this->acceptAllConnections();
     }
   }
@@ -167,15 +156,7 @@ bool WebServer::serveNotFound(
   // Send the response to the client (user agent)
   return httpResponse.send();
 }
-void WebServer::handleClientConnection(Socket &client) {
-  queue.push(client);
-}
-void WebServer::end() {
+void WebServer::stop() {
   this->stopListening();
-  for (size_t i=0 ; i < consumers.size() ; i++) {
-    queue.push(Socket());
-  }
-  for (size_t i=0 ; i< consumers.size() ; i++) {
-    consumers[i]->waitToFinish();
-  }
+  this->finishSocketConsumers();
 }

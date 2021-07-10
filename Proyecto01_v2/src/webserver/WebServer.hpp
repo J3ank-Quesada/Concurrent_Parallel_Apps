@@ -5,7 +5,6 @@
 #include <vector>
 #include "HttpServer.hpp"
 #include "HttpConnectionHandler.hpp"
-#include "Queue.hpp"
 #include "GoldbachWebApp.hpp"
 
 #define DEFAULT_PORT "8080"
@@ -23,7 +22,6 @@ class WebServer : public HttpServer {
   /// Destructor
   ~WebServer();
   static WebServer* web;
-  std::vector<HttpConnectionHandler*> consumers;
 
  public:
   /// Start the simulation
@@ -33,14 +31,12 @@ class WebServer : public HttpServer {
     /// Handle HTTP requests. @see HttpServer::handleHttpRequest()
   bool handleHttpRequest(HttpRequest& httpRequest,
     HttpResponse& httpResponse) override;
-  void end();
+  void stop();
 
  protected:
   /// Analyze the command line arguments
   /// @return true if program can continue execution, false otherwise
   bool analyzeArguments(int argc, char* argv[]);
-  /// This method is called each time a client connection request is accepted.
-  void handleClientConnection(Socket& client) override;
   /// Route, that provide an answer according to the URI value
   /// For example, home page is handled different than a number
   bool route(HttpRequest& httpRequest, HttpResponse& httpResponse);

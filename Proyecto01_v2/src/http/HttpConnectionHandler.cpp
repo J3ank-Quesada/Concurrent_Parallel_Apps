@@ -5,11 +5,12 @@
 * @author Hellen Fuentes Artavia <hellen.fuentesartavia@ucr.ac.cr>
 */
 #include "HttpConnectionHandler.hpp"
-#include "WebServer.hpp"
+#include "HttpServer.hpp"
+
 
 HttpConnectionHandler::HttpConnectionHandler(Queue<Socket>* queue
-, Socket empty, WebServer* webServer) : Consumer(queue, empty) {
-  this->webServer = webServer;
+, Socket empty, HttpServer* httpServer) : Consumer(queue, empty) {
+  this->httpServer= httpServer;
 }
 
 void HttpConnectionHandler::consume(const Socket& socket) {
@@ -29,7 +30,7 @@ void HttpConnectionHandler::consume(const Socket& socket) {
     HttpResponse httpResponse(client);
     // Give subclass a chance to respond the HTTP request
     const bool handled =
-    this->webServer->handleHttpRequest(httpRequest, httpResponse);
+    this->httpServer->handleHttpRequest(httpRequest, httpResponse);
     // If subclass did not handle the request or the client used HTTP/1.0
     if (!handled || httpRequest.getHttpVersion() == "HTTP/1.0") {
       // The socket will not be more used, close the connection
