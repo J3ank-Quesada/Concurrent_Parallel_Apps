@@ -82,13 +82,13 @@ void GoldbachWebApp::injectHTML(GoldbachWork* goldbachWork) {
   GoldbachNumbersList* list = goldbachWork->getGoldbachNumbersList();
 
     // Headers HTTP
-    goldbachWork->response.setHeader("Server", "AttoServer v1.0");
-    goldbachWork->response.setHeader("Content-type",
+    goldbachWork->response->setHeader("Server", "AttoServer v1.0");
+    goldbachWork->response->setHeader("Content-type",
      "text/html; charset=ascii");
 
     // Response body
     std::string titulo = "Goldbach sums for " + goldbachWork->input;
-    goldbachWork->response.body() << "<!DOCTYPE html>\n"
+    goldbachWork->response->body() << "<!DOCTYPE html>\n"
     << "<html lang=\"en\">\n"
     << "  <meta charset=\"ascii\"/>\n"
     << "  <title>" << titulo << "</title>\n"
@@ -97,11 +97,11 @@ void GoldbachWebApp::injectHTML(GoldbachWork* goldbachWork) {
     << "  <ul>\n";
 
     // Sends results
-    goldbachWork->response.body() << *list;
+    goldbachWork->response->body() << *list;
 
     // Remaining body response
-    goldbachWork->response.body() << "  </ul>\n"
+    goldbachWork->response->body() << "  </ul>\n"
     << "  <hr><p><a href=\"/\">Back</a></p>\n"
     << "</html>\n";
-    goldbachWork->response.send();
+    goldbachWork->response->send();
 }

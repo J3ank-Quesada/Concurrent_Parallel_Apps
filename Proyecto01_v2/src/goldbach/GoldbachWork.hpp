@@ -17,8 +17,8 @@
 class GoldbachWork {
  public:
     std::string input;
-    HttpRequest& request;
-    HttpResponse& response;
+    HttpRequest* request;
+    HttpResponse* response;
 
     /**
     * @brief class constructor
@@ -28,6 +28,13 @@ class GoldbachWork {
     */
     GoldbachWork(std::string& input, HttpRequest& request,
     HttpResponse& response);
+   /**
+    * @brief class constructor
+    * @param input string of the included data
+    * @param request HttpRequest
+    * @param response HttpResponse
+    */
+    GoldbachWork();
 
     // destructor
     ~GoldbachWork();
@@ -37,6 +44,9 @@ class GoldbachWork {
     * @return goldbachNumbersList
     */
     GoldbachNumbersList* getGoldbachNumbersList();
+
+
+   bool operator==(const GoldbachWork& other) const;
 
  private:
     // private variables

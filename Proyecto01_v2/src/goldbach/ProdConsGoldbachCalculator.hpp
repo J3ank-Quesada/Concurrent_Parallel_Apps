@@ -1,5 +1,5 @@
-#ifndef PRODCONSGOLDBACHCALCULATORHPP
-#define PRODCONSGOLDBACHCALCULATORHPP
+#ifndef PRODCONSGOLDBACHCALCULATOR_HPP_
+#define PRODCONSGOLDBACHCALCULATOR_HPP_
 #include "Assembler.hpp"
 #include "GoldbachWork.hpp"
 #include <vector>
@@ -10,10 +10,10 @@ class ProdConsGoldbachCalculator: public Consumer<GoldbachWork>
     DISABLE_COPY(ProdConsGoldbachCalculator);
     private:
     GoldbachCalculator *goldbachCalculator;
-    GoldbachWebApp goldbachWebApp;
+    GoldbachWebApp *goldbachWebApp;
 
     public:
-    ProdConsGoldbachCalculator(Queue<GoldbachWork> consumingQueue
+    ProdConsGoldbachCalculator(Queue<GoldbachWork>* consumingQueue
     , Queue<GoldbachWork>* producingQueue
     , const GoldbachWork& stopCondition);
 
@@ -26,4 +26,4 @@ class ProdConsGoldbachCalculator: public Consumer<GoldbachWork>
                             GoldbachWebApp *goldbachWebApp);
 };
 
-#endif // PRODCONSGOLDBACHCALCULATORHPP
+#endif // PRODCONSGOLDBACHCALCULATOR_HPP_
