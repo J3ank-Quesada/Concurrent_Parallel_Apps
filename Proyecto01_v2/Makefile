@@ -21,7 +21,7 @@ OBJECTS=$(SOURCES:src/%.cpp=build/%.o)
 INCLUDE=$(DIRS:%=-I%)
 IGNORES=$(BIN_DIR) $(OBJ_DIR)
 EXEFILE=$(BIN_DIR)/$(APPNAME)
-APPARGS=10 3 100 200 50
+APPARGS=8080 10
 
 default: debug
 

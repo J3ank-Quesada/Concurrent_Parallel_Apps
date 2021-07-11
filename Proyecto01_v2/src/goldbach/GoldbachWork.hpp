@@ -35,6 +35,7 @@ class GoldbachWork {
     * @param response HttpResponse
     */
     GoldbachWork();
+    GoldbachWork(const GoldbachWork& other);
 
     // destructor
     ~GoldbachWork();

@@ -1,29 +1,23 @@
 #ifndef PRODCONSGOLDBACHCALCULATOR_HPP_
 #define PRODCONSGOLDBACHCALCULATOR_HPP_
-#include "Assembler.hpp"
 #include "GoldbachWork.hpp"
 #include <vector>
-class GoldbachCalculator;
+#include "Consumer.hpp"
 class GoldbachWebApp;
-class ProdConsGoldbachCalculator: public Consumer<GoldbachWork>
-  , public Producer<GoldbachWork> {
+class ProdConsGoldbachCalculator: public Consumer<GoldbachWork>{
     DISABLE_COPY(ProdConsGoldbachCalculator);
     private:
-    GoldbachCalculator *goldbachCalculator;
     GoldbachWebApp *goldbachWebApp;
 
     public:
     ProdConsGoldbachCalculator(Queue<GoldbachWork>* consumingQueue
-    , Queue<GoldbachWork>* producingQueue
-    , const GoldbachWork& stopCondition);
+    , const GoldbachWork& stopCondition, GoldbachWebApp *goldbachWebApp);
 
 
     void consume(const GoldbachWork& goldbachWork) override;
 
     int run() override;
 
-    void setIntancePointers(GoldbachCalculator *goldbachCalculator,
-                            GoldbachWebApp *goldbachWebApp);
 };
 
 #endif // PRODCONSGOLDBACHCALCULATOR_HPP_

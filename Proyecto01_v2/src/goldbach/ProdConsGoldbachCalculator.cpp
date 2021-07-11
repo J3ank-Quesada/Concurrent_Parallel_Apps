@@ -3,31 +3,24 @@
 #include "GoldbachCalculator.hpp"
 #include "GoldbachNumbersList.hpp"
 #include "GoldbachWebApp.hpp"
+#include <iostream>
 
 ProdConsGoldbachCalculator::ProdConsGoldbachCalculator(
-  Queue<GoldbachWork>* consumingQueue = nullptr
-  , Queue<GoldbachWork>* producingQueue = nullptr
-  , const GoldbachWork& stopCondition = GoldbachWork()):
+  Queue<GoldbachWork>* consumingQueue
+  , const GoldbachWork& stopCondition,
+  GoldbachWebApp *goldbachWebApp):
   Consumer<GoldbachWork>(consumingQueue, stopCondition)
-  , Producer<GoldbachWork>(producingQueue){
-
-}
-
-void ProdConsGoldbachCalculator::setIntancePointers
-                    (GoldbachCalculator *goldbachCalculator,
-                            GoldbachWebApp *goldbachWebApp){
-  this->goldbachCalculator = goldbachCalculator;
-  this->goldbachWebApp = goldbachWebApp;
+  ,goldbachWebApp(goldbachWebApp){
 }
 
 void ProdConsGoldbachCalculator::consume(const GoldbachWork& goldbachWork) {
-  
-  GoldbachWork work = goldbachWork;
+  GoldbachCalculator goldbachCalculator;
+  GoldbachWork work(goldbachWork);
   GoldbachNumbersList *list = work.getGoldbachNumbersList();
   for (int64_t i = 0; i < list->getListSize(); ++i) {
     // Calcule los numeros de goldbach
     // Guardeme las respuestas en la lista
-    goldbachCalculator->startGoldbach(list->getGoldbachNumber(i));
+    goldbachCalculator.startGoldbach(list->getGoldbachNumber(i));
   }
   this->goldbachWebApp->injectHTML(&work);
 }
