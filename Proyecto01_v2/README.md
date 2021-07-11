@@ -2,9 +2,9 @@
 
 ## Goldbach WebServer
 
-## Primera fase
+## Segunda fase
 
-### Versión 1.0
+### Versión 2.0
 
 Este proyecto se basa en utilizar un servidor web concurrente, el cual puede recibir multiples conexiones de usuarios. El mismo recibe uno o varios números ingresados por el usuario, vía una consulta HTTP. Los procesa y devuelve, mediante una respuesta HTTP, el resultado pertinente para cada número como una lista de las sumas calculadas, por medio de una inyección a HTML.
 
@@ -37,29 +37,45 @@ Cabe mencionar que, el proceso para calcular estas sumas requiere de una gran ca
 
 Para usar el programa de deben seguir los siguientes pasos.
 
-1. Abrir la terminal y ubicarse dentro de la carpeta Proyecto01.
-2. Compilar escribiendo "Make" y presionar enter.
-3. Abrir una terminal dentro de la carpeta /bin incluida dentro de /src.
-4. Escribir ./nombreEjecutable para ejecutar la aplicación o ./nombreEjecutable númeroPuerto cantidadHilos.
-5. Abrir en el navgador, un local host con el puerto indicado al ejecutar el programa. De la forma *localhost:númeroPuerto*.
-6. Para consultar un solo número, el mismo deberá ser agregados en el formulario que se muestra en pantalla y presionar el botón "Calculate"
-7. Si se desea consultar más de un solo número, se debe utilizar el url del sitio. Los números a consultar deberán ser agregados en el url después de localhost:númeroPuerto/, donde cada número debe de ser ingresado como una lista, cada número mediando por una coma, al terminar, presionar enter. Se realiza de la siguiente forma. localhost:númeroPuerto/n1,n2,n3,...,n. Por ejemplo: localhost:8080/-18,54,12,-222.
+1. Abrir la terminal y ubicarse dentro de la carpeta ```/Proyecto01```.
+
+![](img/Terminal.png)
+
+2. Compilar escribiendo ```make``` y presionar enter.
+
+![](img/Make.png)
+
+3. Abrir una terminal dentro de la carpeta ```/bin``` que se crea dentro de ```/Proyecto01``` al compilar.
+
+![](img/Bin.png)
+
+4. Escribir ```./nombreEjecutable``` o ```./nombreEjecutable númeroPuerto cantidadHilos```, para ejecutar la aplicación.
+
+![](img/Ejecucion.png)
+
+![](img/Ejecucion2.png)
+
+
+5. Abrir en el navegador, un local host con el puerto indicado al ejecutar el programa. De la forma ```localhost:númeroPuerto```.
+
+![](img/LocalHost.png)
+
+
+6. Para consultar un solo número, el mismo deberá ser agregados en el formulario que se muestra en pantalla y presionar el botón ```"Calculate"```
+
+![](img/FuncionalidadFormulario01.png)
+
+
+7. Si se desea consultar más de un solo número, se debe utilizar el url del sitio. Los números a consultar deberán ser agregados en el url después de *localhost:númeroPuerto/*, donde cada número debe de ser ingresado como una lista, cada número mediando por una coma, al terminar, presionar enter. Se realiza de la siguiente forma. ```localhost:númeroPuerto/n1,n2,n3,...,n```. Por ejemplo: ```localhost:8080/-18,54,12,-222```.
+
+![](img/FuncionalidadURL01.png)
+
 8. Seguido se calculan y se muestran los resultados de la conjetura. 
 
-## Requerimientos Primera Avance
+![](img/FuncionalidadFormulario02.png)
 
-Para este primer avance de deben de cumplir con una serie de requerimientos que se mencionan a continuación. 
+![](img/FuncionalidadURL02.png)
 
-- Convertir el servidor distribuido, en un servidor concurrente.
-- Implementar TODOs.
-- Realizar diseño expresado en pseudocódigo o redes de petri.
-- Implementar max_connections.
-- Al finalizar el servidor web (con Ctrl+C o el comando kill), éste debe reaccionar a la señal y hacer la limpieza debida.
-- Desarrollar GoldbachCalculator
-- Documentación con Doxygen
-- Modificar la clase HttpServer para implementar un patrón productor consumidor.
-- Incluir casos de prueba
-- .gitignore
 
 ## Autores
 
