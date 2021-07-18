@@ -91,9 +91,9 @@ void Controlador::aceptarTrabajo(){
       // Trabaja sobre 1 mapa del job, le da dimensiones y rellena la matriz
       MapaMagico *islaActual = generador.obtenerMapa(
       trabajos[posicionTrabajo].getNombreMapa(),
-      trabajos[posicionTrabajo].getNumMidnights(), rutaArchivos);
+      trabajos[posicionTrabajo].getNumMidnights(), rutaArchivos, this->numThreads);
       // Ve el destino del mapa despues de n midnights
-      EspejoMagico clarividente(islaActual);
+      EspejoMagico clarividente(islaActual, this->numThreads);
       clarividente.verDestino();
       // Libera la memoria que ocupo el mapa
       liberarMemoria(islaActual);

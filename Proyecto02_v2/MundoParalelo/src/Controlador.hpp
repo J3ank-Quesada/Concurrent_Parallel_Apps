@@ -28,7 +28,7 @@ int numThreads;
   * @param nombreArchivo el nombre del archivo de trabajo
   * @param ruta la ruta donde se encuentra el archivo de trabajo y los mapas
   */
-  void iniciar(std::string nombreArchivo, std::string ruta,int argc, char* argv[]);
+  void iniciar(std::string nombreArchivo, std::string ruta,int argc, char* argv[], int numThreads);
 
   /**
   * @brief libera la memoria alojada para la creación de las islas

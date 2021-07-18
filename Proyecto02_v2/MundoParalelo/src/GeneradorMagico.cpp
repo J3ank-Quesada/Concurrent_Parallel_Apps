@@ -18,11 +18,11 @@ std::vector<Trabajo>* escribir) {
 }
 
 MapaMagico* GeneradorMagico::obtenerMapa(std::string nombreMapa,
-  int midnights, std::string ruta) {
+  int midnights, std::string ruta, int numThreads) {
   // Crea un nuevo mapa, para rellenarlo con el archivo que abra
   MapaMagico *mapaMagico = new MapaMagico;
   mapaMagico->miNombre = nombreMapa;
-  lector.lectorMapa(nombreMapa, mapaMagico, ruta);
+  lector.lectorMapa(nombreMapa, mapaMagico, ruta, numThreads);
   mapaMagico->numeroIteraciones = midnights;
   // Devuelve el mapa creado
   return mapaMagico;

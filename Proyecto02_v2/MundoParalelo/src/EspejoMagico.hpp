@@ -13,6 +13,7 @@
 class EspejoMagico{
  private:
   MapaMagico* isla;
+  int numThreads;
 
  public:
   /**
@@ -20,7 +21,7 @@ class EspejoMagico{
   * @details inicializa el parámetro que recibe como islas
   * @param isla el vector de mapas
   */
-  explicit EspejoMagico(MapaMagico* isla);
+  explicit EspejoMagico(MapaMagico* isla, int numThreads);
 
   /**
   * @brief itera sobre las islas y las manda a evaluar al método evaluarIsla

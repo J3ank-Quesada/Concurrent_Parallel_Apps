@@ -7,8 +7,9 @@
 #include "EspejoMagico.hpp"
 #include <omp.h>
 
-EspejoMagico::EspejoMagico(MapaMagico* isla) {
+EspejoMagico::EspejoMagico(MapaMagico* isla, int numThreads) {
   this->isla = isla;
+  this->numThreads = numThreads;
 }
 
 void EspejoMagico::verDestino() {
@@ -17,7 +18,7 @@ void EspejoMagico::verDestino() {
 void EspejoMagico::evaluarIsla(MapaMagico* isla) {
   // Escribe el mapa actual en el directorio Salidas
   isla->procesarMapaActual();
-  VisorFuturo visor;
+  VisorFuturo visor(this->numThreads);
   // Si en la isla solo se quiere ver el resultado final
   if (isla->numeroIteraciones < 0) {
     isla->numeroIteraciones = isla->numeroIteraciones*(-1);

@@ -34,7 +34,7 @@ class Lector{
   * @param ruta ruta donde se encuenta el archivo del mapa
   */
   void lectorMapa(std::string nombreArchivo,
-    MapaMagico* mapaMagico, std::string ruta);
+    MapaMagico* mapaMagico, std::string ruta, int numThreads);
 };
 
 #endif  // SRC_LECTOR_HPP_
