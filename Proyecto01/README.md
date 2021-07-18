@@ -37,14 +37,45 @@ Cabe mencionar que, el proceso para calcular estas sumas requiere de una gran ca
 
 Para usar el programa de deben seguir los siguientes pasos.
 
-1. Abrir la terminal y ubicarse dentro de la carpeta Proyecto01.
-2. Compilar escribiendo "Make" y presionar enter.
-3. Abrir una terminal dentro de la carpeta /bin incluida dentro de /src.
-4. Escribir ./nombreEjecutable para ejecutar la aplicación o ./nombreEjecutable númeroPuerto cantidadHilos.
-5. Abrir en el navgador, un local host con el puerto indicado al ejecutar el programa. De la forma *localhost:númeroPuerto*.
-6. Para consultar un solo número, el mismo deberá ser agregados en el formulario que se muestra en pantalla y presionar el botón "Calculate"
-7. Si se desea consultar más de un solo número, se debe utilizar el url del sitio. Los números a consultar deberán ser agregados en el url después de localhost:númeroPuerto/, donde cada número debe de ser ingresado como una lista, cada número mediando por una coma, al terminar, presionar enter. Se realiza de la siguiente forma. localhost:númeroPuerto/n1,n2,n3,...,n. Por ejemplo: localhost:8080/-18,54,12,-222.
+1. Abrir la terminal y ubicarse dentro de la carpeta ```/Proyecto01```.
+
+![](img/Terminal.png)
+
+2. Compilar escribiendo ```make``` y presionar enter.
+
+![](img/Make.png)
+
+3. Abrir una terminal dentro de la carpeta ```/bin``` que se crea dentro de ```/Proyecto01``` al compilar.
+
+![](img/Bin.png)
+
+4. Escribir ```./nombreEjecutable``` o ```./nombreEjecutable númeroPuerto cantidadHilos```, para ejecutar la aplicación.
+
+![](img/Ejecucion.png)
+
+![](img/Ejecucion2.png)
+
+
+5. Abrir en el navegador, un local host con el puerto indicado al ejecutar el programa. De la forma ```localhost:númeroPuerto```.
+
+![](img/LocalHost.png)
+
+
+6. Para consultar un solo número, el mismo deberá ser agregados en el formulario que se muestra en pantalla y presionar el botón ```"Calculate"```
+
+![](img/FuncionalidadFormulario01.png)
+
+
+7. Si se desea consultar más de un solo número, se debe utilizar el url del sitio. Los números a consultar deberán ser agregados en el url después de *localhost:númeroPuerto/*, donde cada número debe de ser ingresado como una lista, cada número mediando por una coma, al terminar, presionar enter. Se realiza de la siguiente forma. ```localhost:númeroPuerto/n1,n2,n3,...,n```. Por ejemplo: ```localhost:8080/-18,54,12,-222```.
+
+![](img/FuncionalidadURL01.png)
+
 8. Seguido se calculan y se muestran los resultados de la conjetura. 
+
+![](img/FuncionalidadFormulario02.png)
+
+![](img/FuncionalidadURL02.png)
+
 
 ## Requerimientos Primera Avance
 
