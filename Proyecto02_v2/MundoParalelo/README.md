@@ -5,7 +5,7 @@
 ## Análisis de rendimiento
 De forma inicial se decidió realizar un mapeo dinámico para llevar a cabo el proceso correspondiente para la creación de matrices, proceso de cada medianoche y escritura de outputs, pues nos pareció la mejor forma de dividir el trabajo por su naturaleza dinámica.
 Por otro lado, para realizar la elección definitiva del tipo de mapeo a realizar, se realizó un mapeo en bloque, cíclico, dinámico y guiado para obtener los tiempos de duración de cada uno y poder calcular el incremento de velocidad y eficiencia con cada uno de ellos. 
-Cada uno de los mapeos se probaron con el job001.txt. Donde para cada uno de ellos se obtuvo el tiempo de duración en minutos, speedup y eficiencia. Los resultados obtenidos se pueden observar en la siguiente tabla.
+Cada uno de los mapeos se probaron con el job002.txt. Donde para cada uno de ellos se obtuvo el tiempo de duración en minutos, speedup y eficiencia. Los resultados obtenidos se pueden observar en la siguiente tabla.
 
 ![](img/img0.png)
 

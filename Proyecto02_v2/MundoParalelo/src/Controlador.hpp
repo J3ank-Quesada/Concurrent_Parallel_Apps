@@ -14,6 +14,8 @@
 class Controlador {
  private:
 std::vector<Trabajo> trabajos;
+std::string rutaArchivos;
+int numThreads;
 
  public:
   // constructor y destructor
@@ -26,7 +28,7 @@ std::vector<Trabajo> trabajos;
   * @param nombreArchivo el nombre del archivo de trabajo
   * @param ruta la ruta donde se encuentra el archivo de trabajo y los mapas
   */
-  void iniciar(std::string nombreArchivo, std::string ruta);
+  void iniciar(std::string nombreArchivo, std::string ruta,int argc, char* argv[]);
 
   /**
   * @brief libera la memoria alojada para la creación de las islas
@@ -39,6 +41,10 @@ std::vector<Trabajo> trabajos;
   * @brief crea un directorio para guadar los outputs que se obtienen después de procesar uno o varios mapas
   */
   void crearDirectorio();
+
+
+  void repartirTrabajo();
+  void aceptarTrabajo();
 };
 
 #endif  // SRC_CONTROLADOR_HPP_
