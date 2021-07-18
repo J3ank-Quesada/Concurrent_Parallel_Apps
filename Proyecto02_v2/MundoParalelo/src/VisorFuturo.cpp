@@ -18,8 +18,7 @@ VisorFuturo::~VisorFuturo() { }
 void VisorFuturo::revisarMapa(MapaMagico* mapa) {
   alistarCopia(mapa->mapa);
   // Repartir las filas de la matriz entre los hilos
-  #pragma omp parallel for num_threads(numThreads) shared(mapa, copia) \
-   schedule(static) collapse(2)
+  #pragma omp parallel for num_threads(numThreads) shared(mapa) schedule(static) collapse(2)
   for (size_t f = 0; f < mapa->mapa.size(); f++) {
     for (size_t c = 0; c < mapa->mapa[0].size(); c++) {
       evaluarReglas(f, c, mapa);
