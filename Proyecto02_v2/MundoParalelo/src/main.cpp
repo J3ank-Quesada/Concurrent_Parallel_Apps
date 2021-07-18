@@ -6,21 +6,26 @@
 */
 #include <string>
 #include "Controlador.hpp"
+#include <omp.h>
 
 int main(int argc, char* argv[]) {
   int estado = EXIT_SUCCESS;
   std::string nombreArchivo = "";
   std::string ruta = "";
   Controlador controlador;
+  int numThreads = omp_get_max_threads();
   // debe ser igual a 3
-  if (argc == 3) {
+  if(argc >=3 && argc < 5){
     nombreArchivo = argv[1];
     ruta = argv[2];
+    if (argc == 4) {
+      numThreads = strtoull(argv[3], nullptr, 10);
+    }
   }
-  if (ruta == "" || nombreArchivo == "" || argc !=3) {
+  if (ruta == "" || nombreArchivo == "") {
     estado = EXIT_FAILURE;
   } else {
-    controlador.iniciar(nombreArchivo, ruta);
+    controlador.iniciar(nombreArchivo, ruta, argc, argv, numThreads);
   }
   return estado;
 }

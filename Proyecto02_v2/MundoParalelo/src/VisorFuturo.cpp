@@ -9,15 +9,17 @@
 #include <iostream>
 #include "VisorFuturo.hpp"
 
-VisorFuturo::VisorFuturo() { }
+VisorFuturo::VisorFuturo(int numThreads) { 
+  this->numThreads = numThreads;
+}
 
 VisorFuturo::~VisorFuturo() { }
 
 void VisorFuturo::revisarMapa(MapaMagico* mapa) {
   alistarCopia(mapa->mapa);
-  int numThreads = omp_get_max_threads();
   // Repartir las filas de la matriz entre los hilos
-  #pragma omp parallel for num_threads(numThreads) shared(mapa, copia) schedule(static)
+  #pragma omp parallel for num_threads(numThreads) shared(mapa, copia) \
+   schedule(static) collapse(2)
   for (size_t f = 0; f < mapa->mapa.size(); f++) {
     for (size_t c = 0; c < mapa->mapa[0].size(); c++) {
       evaluarReglas(f, c, mapa);
@@ -113,16 +115,7 @@ bool VisorFuturo::verificarPosicion(int f, int c) {
 
 void VisorFuturo::alistarCopia(std::vector<std::vector<char>> original) {
   // Crea una copia de la matriz original en la variable de clase copia
-  this->copia.resize(original.size());
-  for (size_t i= 0 ; i < copia.size(); i++) {
-    copia[i].resize(original[0].size());
-  }
-  // Copia el contenido en la copia
-  for (size_t i = 0 ; i < copia.size(); i++) {
-    for (size_t j = 0 ; j < copia[0].size(); j++) {
-      copia[i][j] = original[i][j];
-    }
-  }
+  copia.swap(original);
 }
 
 // Metodo de prueba para imprimir una matriz con un mensaje

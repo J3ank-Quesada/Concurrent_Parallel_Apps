@@ -35,7 +35,7 @@ void Lector::lectorTrabajo(std::string nombreArchivo,
 }
 
 void Lector::lectorMapa(std::string nombreArchivo,
-      MapaMagico* mapaMagico, std::string ruta) {
+      MapaMagico* mapaMagico, std::string ruta, int numThreads) {
   std::string nombre ="";
   nombre+= ruta;
   nombre+=nombreArchivo;
@@ -58,8 +58,7 @@ void Lector::lectorMapa(std::string nombreArchivo,
     while (std::getline(archivo, linea) && contLineas < numFilas) {
       if (linea.length() <= numColumnas) {
         // Agrega el string a la matriz mapa concurrentemente
-        int numThreads = omp_get_max_threads();
-        #pragma omp parallel for num_threads(numThreads) default (none) \
+        #pragma omp parallel for num_threads(numThreads) default(none) \
         shared(mapaMagico, linea, contLineas) schedule(static)
         for (size_t j = 0; j < mapaMagico->mapa[0].size(); j++) {
           mapaMagico->mapa[contLineas][j] = linea[j];

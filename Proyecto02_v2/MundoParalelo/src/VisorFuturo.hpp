@@ -17,6 +17,7 @@ class VisorFuturo {
  private:
   // matriz copia de la original
   std::vector<std::vector<char>> copia;
+  int numThreads;
 
   /**
   * @brief evalúa las reglas correspondientes a una inundación para una celda en una posición
@@ -81,7 +82,7 @@ class VisorFuturo {
 
  public:
   // constructor y destructor de clase
-  VisorFuturo();
+  VisorFuturo(int numThreads);
   ~VisorFuturo();
 
   /**

@@ -1,4 +1,4 @@
-CXX=g++
+CXX=mpic++
 #DEFS=-DSIMULATION
 DEFS=-DWEBSERVER
 FLAGS=$(strip -Wall -Wextra $(DEFS))

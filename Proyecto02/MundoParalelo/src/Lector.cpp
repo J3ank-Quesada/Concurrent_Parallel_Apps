@@ -56,7 +56,7 @@ void Lector::lectorMapa(std::string nombreArchivo,
     mapaMagico->setTamanioMapa(numFilas, numColumnas);
     size_t contLineas = 0;
     while (std::getline(archivo, linea) && contLineas < numFilas) {
-      if (linea.length() >= numColumnas) {
+      if (linea.length() <= numColumnas) {
         // Agrega el string a la matriz mapa concurrentemente
         #pragma omp parallel for num_threads(8) default (none) \
         shared(mapaMagico, linea, contLineas) schedule(static)

@@ -41,7 +41,7 @@ class GeneradorMagico {
   * @return mapaMagico creados
   */
   MapaMagico* obtenerMapa(std::string nombreMapa,
-    int midnights, std::string ruta);
+    int midnights, std::string ruta, int numThreads);
 };
 
 #endif  // SRC_GENERADORMAGICO_HPP_
