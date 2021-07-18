@@ -1,8 +1,10 @@
 # Universidad de Costa Rica
-## Bosque Encantado Serial
-## Primera fase
-### Versión 1.0
+## Bosque Encantado Paralelo
+## Segunda fase
+### Versión 2.0
+
 ## Descripción del problema
+
 Un rey generoso de una isla muy lejana, estaba preocupado porque sus ciudadanos estaban aburridos de la monotonía de la pequeña isla. Tuvo la idea de encantar el bosque que está alrededor de su castillo, de tal forma que cada medianoche el bosque cambie y al día siguiente los ciudadanos encuentren un lugar diferente para recrearse. A su mago le pareció genial la idea, pero no sabe qué reglas incluir en el hechizo para que el bosque se mantenga en equilibrio y no llegue a convertirse en un desierto o una selva impenetrable. Si tuvieran alguna forma de ver el efecto de las reglas a futuro, podrían decidir el hechizo con mayor seguridad.
  
 El rey tiene un mapa del bosque. El mapa ilustra lo que hay en cada metro cuadrado de la isla (celdas). Una celda puede contener un árbol mágico ( a ), un trozo de lago encantado ( l ), o una pradera ( - ).
@@ -19,12 +21,12 @@ Se quiere que el programa ayude a probar las reglas mágicas anteriores en vario
  
 ## Usabilidad
  Para usar el programa se deben seguir los siguientes pasos.
-1. Abrir la terminal y ubicarse dentro de la carpeta /Proyecto02.
-2. Si desea probar la versión serial, entrar a la carpeta /MundoEncantado, si desea probar la versión paralela entrar a la carpeta /MundoParalelo
-3. Compilar escribiendo "Make" y presionar enter.
-4. Abrir una terminal dentro de la carpeta /bin incluida dentro de /MundoEncantado o /MundoParalelo, dependiendo de la versión  que esté probando.
-5. Para la ejecución del programa escribir ./nombreEjecutable nombreJob.txt rutaJob/, es importante mencionar que la ruta donde se encuentre el trabajo, debe de ser la misma ruta donde se encuentren los mapas.
-6. Seguido, se realiza el proceso correspondiente al trabajo que se desea probar y se genera una carpeta llamada “Salidas” dentro de /MundoEncantado o /MundoParalelo, dependiendo de la versión que esté probando. En esta carpeta se encontrarán los outputs del trabajo introducido por el usuario, un archivo por mapa procesado.
+1. Ubicarse dentro de la carpeta ```/Proyecto02_v2```.
+2. Entrar en la carpeta ```/MundoParalelo``` y abrir una terminal en esa ruta.
+3. Compilar escribiendo ```make``` en la terminal y presionar enter.
+4. Abrir una terminal dentro de la carpeta ```/bin```, la cual se crea al compilar dentro de la carpeta ```/MundoParalelo```.
+5. Para la ejecución del programa escribir ```./nombreEjecutable nombreJob.txt rutaJob/```, es importante mencionar que la ruta donde se encuentre el trabajo, debe de ser la misma ruta donde se encuentren los mapas.
+6. Seguido, se realiza el proceso correspondiente al trabajo que se desea probar y se genera una carpeta llamada ```“Salidas”``` dentro de ```/MundoParalelo```. En esta carpeta se encontrarán los outputs del trabajo introducido por el usuario, un archivo por mapa procesado.
  
 ## Autores
 Jean Quesada Abarca, B96111\
