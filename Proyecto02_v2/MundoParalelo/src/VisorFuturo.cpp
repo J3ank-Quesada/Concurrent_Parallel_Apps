@@ -9,7 +9,7 @@
 #include <iostream>
 #include "VisorFuturo.hpp"
 
-VisorFuturo::VisorFuturo(int numThreads) { 
+VisorFuturo::VisorFuturo(int numThreads) {
   this->numThreads = numThreads;
 }
 

@@ -6,34 +6,27 @@
 En este documento se hace la discusión sobre el diagrama UML implementado y algoritmos realizados para explicar la funcionalidad del programa.
 
 ### Algoritmos
-El siguiente pseudocódigo corresponde a la clase controlador. Esta es la encargada de inicializar el programa y controlar el proceso a realizar.
+El siguiente pseudocódigo corresponde al método de iniciar de la clase controlador. La cual se encarga de inicializar el programa y controlar el proceso a realizar.
 
 ```
-class Controlador{
-    private:
+iniciar(nombre, ruta, numThreads):
     vector<Trabajo> trabajos;
-    iniciar(nombre,ruta){
-        // Obtiene los mapas del job y los procesa en Trabajos
-        Generador::obtenerIslas(nombre,ruta,trabajos);
-        // Crea el directorio Salidas un nivel arriba de la carpeta donde se encuentre
-        crearDirectorio();
-        for(i=0 ;i<trabajos.size();i++){
-            // obtiene los datos y llena la matriz de un Mapa con la informacion en Trabajo y la ruta
-            MapaMagico *nuevo = Generador::obtenerMapa(trabajos[i],ruta);
-            EspejoMagico::verDestino(nuevo);
-            liberarMemoria();
-        }
-    }
-    crearDirectorio(){
-        mkdir(DIRECTORIO_SALIDA, 0777);
-    }
-    liberarMemoria(MapaMagico *borrar){
-        delete borrar;
-    }
-    
-}
+    Generador::obtenerIslas(nombre,ruta,trabajos,numThreads);
+    crearDirectorio();
+    if (MPI_Init() == MPI_SUCCESS) {
+        int my_rank = MPI_Comm_rank();
+        if (my_rank == 0){ 
+          repartirTrabajo();
+          }
+        else{ 
+          aceptarTrabajo();
+          }
+        MPI_Finalize();
+      }
 ```
-Mediante el método crearDirectorio, se crea un directorio donde serán almacenados los outputs del programa. Por lo que, para iniciar el programa, se crea el directorio y se reciben los trabajos y mapas dentro de él. El trabajo es almacenado en un vector de trabajo que contiene los nombres de los archivos de texto con los mapas y la cantidad de mediasnoches a procesar. Después de eso, cada mapa guardado en el vector de trabajo se extrae y se crea una matriz en MapaMagico con las dimensiones del mapa y su contenido. Por último, llama al método encargado de procesar cada mapa. Después de realizar el proceso libera la memoria alojada para cada mapa.
+Mediante el método crearDirectorio, se crea un directorio donde serán almacenados los outputs del programa. Por lo que, para iniciar el programa, se crea el directorio y se reciben los trabajos y mapas dentro de él. El trabajo es almacenado en un vector de trabajo que contiene los nombres de los archivos de texto con los mapas y la cantidad de mediasnoches a procesar. Asimismo, se inicializa el MPI, mediante MPI_Init(). Después de eso, si es el proceso 0, reparte los trabajos (productor), de otra forma, pide por trabajos (consumidor). Posterior, se finaliza el MPI mediante MPI_Finalize().
+
+Después de eso, cada mapa guardado en el vector de trabajo se extrae y se crea una matriz en MapaMagico con las dimensiones del mapa y su contenido. Por último, llama al método encargado de procesar cada mapa. Después de realizar el proceso libera la memoria alojada para cada mapa.
 
 ### Diseño UML
 

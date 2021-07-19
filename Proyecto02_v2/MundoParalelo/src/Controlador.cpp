@@ -13,14 +13,15 @@
 #define STOP_CONDITION -3
 #define INITIAL_STATE -1
 
-Controlador::Controlador() { 
+Controlador::Controlador() {
   this->rutaArchivos = "";
   this->numThreads = 0;
 }
 
 Controlador::~Controlador() { }
 
-void Controlador::iniciar(std::string nombreArchivo, std::string ruta,int argc, char* argv[], int numThreads) {
+void Controlador::iniciar(std::string nombreArchivo, std::string ruta,
+int argc, char* argv[], int numThreads) {
   this->numThreads = numThreads;
   rutaArchivos = ruta;
   GeneradorMagico generador;
@@ -49,7 +50,7 @@ void Controlador::crearDirectorio() {
   mkdir(DIRECTORIO_SALIDA, 0777);
 }
 
-void Controlador::repartirTrabajo(){
+void Controlador::repartirTrabajo() {
   size_t trabajoRepartido = 0;
 
   while (trabajoRepartido < trabajos.size()) {
@@ -57,7 +58,7 @@ void Controlador::repartirTrabajo(){
 
     MPI_Recv(&trabajador, 1, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD,
              MPI_STATUS_IGNORE);
-    
+
     MPI_Send(&trabajoRepartido, 1, MPI_INT, trabajador, 0, MPI_COMM_WORLD);
     trabajoRepartido++;
   }
@@ -76,7 +77,7 @@ void Controlador::repartirTrabajo(){
   }
 }
 
-void Controlador::aceptarTrabajo(){
+void Controlador::aceptarTrabajo() {
   GeneradorMagico generador;
   int my_rank = INITIAL_STATE;
   MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
@@ -86,12 +87,14 @@ void Controlador::aceptarTrabajo(){
     MPI_Recv(&posicionTrabajo, 1, MPI_INT, 0, 0, MPI_COMM_WORLD,
              MPI_STATUS_IGNORE);
     if (posicionTrabajo != STOP_CONDITION) {
-      std::cout << "proceso # " << my_rank << " le toco mapa #" << posicionTrabajo
+      std::cout << "proceso # " << my_rank
+      << " le toco mapa #" << posicionTrabajo
                 << std::endl;
       // Trabaja sobre 1 mapa del job, le da dimensiones y rellena la matriz
       MapaMagico *islaActual = generador.obtenerMapa(
       trabajos[posicionTrabajo].getNombreMapa(),
-      trabajos[posicionTrabajo].getNumMidnights(), rutaArchivos, this->numThreads);
+      trabajos[posicionTrabajo].getNumMidnights(),
+      rutaArchivos, this->numThreads);
       // Ve el destino del mapa despues de n midnights
       EspejoMagico clarividente(islaActual, this->numThreads);
       clarividente.verDestino();

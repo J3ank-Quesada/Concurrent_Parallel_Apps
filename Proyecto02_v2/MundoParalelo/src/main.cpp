@@ -4,9 +4,9 @@
 * @author Jean Carlo Quesada Abarca <jean.quesadaabarca@ucr.ac.cr>
 * @author Andrés Zamora Víquez <andres.zamoraviquez@ucr.ac.cr>
 */
+#include <omp.h>
 #include <string>
 #include "Controlador.hpp"
-#include <omp.h>
 
 int main(int argc, char* argv[]) {
   int estado = EXIT_SUCCESS;
@@ -15,7 +15,7 @@ int main(int argc, char* argv[]) {
   Controlador controlador;
   int numThreads = omp_get_max_threads();
   // debe ser igual a 3
-  if(argc >=3 && argc < 5){
+  if (argc >= 3 && argc < 5) {
     nombreArchivo = argv[1];
     ruta = argv[2];
     if (argc == 4) {

@@ -50,7 +50,7 @@ MapaMagico& MapaMagico::operator = (const MapaMagico &otro) {
   return *this;
 }
 
-//Vuelve la matriz vacia y con size 0
+// Vuelve la matriz vacia y con size 0
 void MapaMagico::liberarMemoria() {
   this->mapa.clear();
 }
