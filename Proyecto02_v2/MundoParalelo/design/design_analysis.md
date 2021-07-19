@@ -7,22 +7,22 @@
 
 **Descomposicion:**
 
-    Cada mapa del archivo de trabajo (job).
+Cada mapa del archivo de trabajo (job).
 
 **Mapeo:**
 
-    El tipo de mapeo es dinamico, cada vez que un proceso termina con un trabajo pregunta al proceso principal si existe algun trabajo por realizar, si esto es correcto le asigna un trabajo, si no se envia una condicion de parada al proceso.
+El tipo de mapeo es dinamico, cada vez que un proceso termina con un trabajo pregunta al proceso principal si existe algun trabajo por realizar, si esto es correcto le asigna un trabajo, si no se envia una condicion de parada al proceso.
 
 
 ## Tipo de descomposición y mapeo, mediante OpenMP
 
 **Descomposicion:**
 
-    Filas de una matriz.
+Filas de una matriz.
 
 **Mapeo:**
 
-    El tipo de mapeo es de tipo estático, como se conoce con anticipacion la cantidad de unidades de trabajo, entonces se elige este tipo de mapeo, además el tipo de trabajo que realiza cada trabajador similar, por lo que elegir este tipo de mapeo nos beneficia.
+El tipo de mapeo es de tipo estático, como se conoce con anticipacion la cantidad de unidades de trabajo, entonces se elige este tipo de mapeo, además el tipo de trabajo que realiza cada trabajador similar, por lo que elegir este tipo de mapeo nos beneficia.
 
 
 

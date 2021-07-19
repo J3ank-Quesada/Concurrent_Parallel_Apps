@@ -27,5 +27,3 @@ En la figura 2, se muestra la eficiencia obtenida a partir de los tiempos de dur
 Por último, en la figura 3, se realiza una comparación entre los tiempos de duración de cada versión, donde se obtiene el mejor tiempo en la versión híbrida, lo cual afirma que en conjunto con los datos de dpeedup y eficiencia, nos da el mejor rendimiendo para el procesamiento a realizar en el programa.
 
 Para concluir, los resultados arrojaron la versión híbrida cumple con el rendimiento esperado, pues al realizar sus procesos de forma distribuida y concurrente, va a aumentar su eficiencia en un menor tiempo.
-
-Por otro lado, la eficiencia del programa prodría ser mejorada mediante, 

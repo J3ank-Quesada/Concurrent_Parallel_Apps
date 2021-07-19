@@ -24,8 +24,17 @@ Se quiere que el programa ayude a probar las reglas mágicas anteriores en vario
 1. Ubicarse dentro de la carpeta ```/Proyecto02_v2```.
 2. Entrar en la carpeta ```/MundoParalelo``` y abrir una terminal en esa ruta.
 3. Compilar escribiendo ```make``` en la terminal y presionar enter.
+
+![](MundoParalelo/img/compilar.png)
+
 4. Abrir una terminal dentro de la carpeta ```/bin```, la cual se crea al compilar dentro de la carpeta ```/MundoParalelo```.
-5. Para la ejecución del programa escribir ```./nombreEjecutable nombreJob.txt rutaJob/```, es importante mencionar que la ruta donde se encuentre el trabajo, debe de ser la misma ruta donde se encuentren los mapas.
+
+![](MundoParalelo/img/bin.png)
+
+5. Para la ejecución del programa escribir ```mpiexec -n cantidadProcesos ./nombreEjecutable nombreJob.txt rutaJob/ cantidadHilos```, es importante mencionar que la ruta donde se encuentre el trabajo, debe de ser la misma ruta donde se encuentren los mapas. Asimismo, la cantidad de procesos mínima debe de ser 2, de otra forma solo se ejecuta el proceso que recibe el trabajo, pero no se realiza el trabajo.
+
+![](MundoParalelo/img/ejecucion.png)
+
 6. Seguido, se realiza el proceso correspondiente al trabajo que se desea probar y se genera una carpeta llamada ```“Salidas”``` dentro de ```/MundoParalelo```. En esta carpeta se encontrarán los outputs del trabajo introducido por el usuario, un archivo por mapa procesado.
  
 ## Autores
