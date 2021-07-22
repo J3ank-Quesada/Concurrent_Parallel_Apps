@@ -43,7 +43,9 @@ int numThreads;
   */
   void crearDirectorio();
 
-
+  /**
+  * @brief crea un directorio para guadar los outputs que se obtienen después de procesar uno o varios mapas
+  */
   void repartirTrabajo();
   void aceptarTrabajo();
 };
