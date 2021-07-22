@@ -13,14 +13,14 @@
 #include "GoldbachCalculator.hpp"
 #include "GoldbachNumbersList.hpp"
 #include "GoldbachNumber.hpp"
-#include "ProdConsGoldbachCalculator.hpp"
+#include "Mathematicians.hpp"
+#include "NumbersContainer.hpp"
 #include <vector>
 
 class GoldbachWebApp {
  private:
-   GoldbachCalculator* goldbachCalculator;
-   Queue<GoldbachWork> workForThreads;
-   std::vector<ProdConsGoldbachCalculator*> goldbachWorkConsumer;
+   Queue<NumbersContainer> workForThreads;
+   std::vector<Mathematicians*> mathematicians;
    int numberOfCores;
 
  public:  // constructor
@@ -50,7 +50,7 @@ class GoldbachWebApp {
     bool processRequest(HttpRequest& request, HttpResponse& response);
 
 
-    void initializeGoldbachWorkConsumers();
+    void initializeMathematicians();
 };
 
 #endif  // SRC_WEBSERVER_GOLDBACHWEBAPP_HPP_

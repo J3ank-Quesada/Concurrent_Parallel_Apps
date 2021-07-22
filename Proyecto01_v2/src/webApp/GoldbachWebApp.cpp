@@ -8,18 +8,17 @@
 #include "GoldbachWebApp.hpp"
 #include <regex>
 #include <iostream>
+#include "Semaphore.hpp"
+#include <mutex>
 
 GoldbachWebApp::GoldbachWebApp() {
-  goldbachCalculator = new GoldbachCalculator();
-  this->numberOfCores = 0;
   this->numberOfCores = sysconf(_SC_NPROCESSORS_ONLN);
-  initializeGoldbachWorkConsumers();
+  initializeMathematicians();
 }
 
 GoldbachWebApp::~GoldbachWebApp() {
-  delete this->goldbachCalculator;
   for(int destroy = 0 ; destroy < numberOfCores; ++destroy){
-    delete goldbachWorkConsumer[destroy]; 
+    delete mathematicians[destroy]; 
   }
 }
 
@@ -69,8 +68,31 @@ bool GoldbachWebApp::processRequest(
 
   // If it's a valid request
   if (solicitudValida) {
-    GoldbachWork goldbachWork(parsedUri,request,response);
-    workForThreads.push(goldbachWork);
+    GoldbachWork* goldbachWork = new GoldbachWork(parsedUri,
+    request, response);
+    // Devuelve una lista con Numeros de Goldbach (clase para trabajar Goldbach)
+    GoldbachNumbersList* list = goldbachWork->getGoldbachNumbersList();
+    Semaphore* sem = new Semaphore(0);
+    std::mutex* mutex = new std::mutex;
+    int* totalNumbers = new int;
+    int* actualNumbers = new int;
+    *totalNumbers = list->getListSize();
+    *actualNumbers = 0;
+
+    for (int64_t i = 0; i < list->getListSize(); ++i) {
+      //  Producer
+      NumbersContainer numbersContainer(mutex,actualNumbers,
+      totalNumbers,list->getGoldbachNumber(i),sem);
+      workForThreads.push(numbersContainer);
+      
+    }
+    sem->wait();
+    delete sem;
+    delete mutex;
+    delete actualNumbers;
+    delete totalNumbers;
+    // Inyecte los resultados a html.
+    injectHTML(goldbachWork);
   }
   return solicitudValida;
 }
@@ -103,12 +125,12 @@ void GoldbachWebApp::injectHTML(GoldbachWork* goldbachWork) {
     goldbachWork->response->send();
 }
 
-void GoldbachWebApp::initializeGoldbachWorkConsumers(){
-  goldbachWorkConsumer.resize(numberOfCores);
+void GoldbachWebApp::initializeMathematicians(){
+  mathematicians.resize(numberOfCores);
   for(int initialize = 0 ; initialize < numberOfCores; ++initialize){
-    goldbachWorkConsumer[initialize] = 
-    new ProdConsGoldbachCalculator(&workForThreads,GoldbachWork(),this);
-    assert(goldbachWorkConsumer[initialize]);
-    goldbachWorkConsumer[initialize]->startThread();
+    mathematicians[initialize] = 
+    new Mathematicians(&workForThreads,NumbersContainer());
+    assert(mathematicians[initialize]);
+    mathematicians[initialize]->startThread();
   }
 }

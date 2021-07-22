@@ -55,23 +55,20 @@ the amount of sums.*/
 void GoldbachCalculator::strongConjecture(GoldbachNumber* numberC) {
   int64_t number = numberC->getNumber();
   int64_t allsums = 0ll;
+  int64_t verificar = 0ll;
   // Variable firstN if the first Number to sum other
   for (int64_t firstN = 0; firstN <= (number/2); firstN++) {
-    for (int64_t secondN =0 ; secondN <= (number); secondN++) {
-      // Check if the firstN and seconN are primes
-      if (primes(firstN) && primes(secondN)) {
-        // if the sum of the 2 primes are equal to the number print it
-        int64_t validSum = firstN + secondN;
-        if (validSum == number) {
-          if (numberC->getPositive()) {
-            ++allsums;
-          } else {
-            // if we have storage space then
-            // store the numbers that composed the sum
-            numberC->sums.push_back(firstN);
-            numberC->sums.push_back(secondN);
-            ++allsums;
-          }
+    if(primes(firstN)){
+      verificar = number - firstN;
+      if(primes(verificar) && (verificar>= firstN)){
+        if (numberC->getPositive()) {
+          ++allsums;
+        } else {
+          // if we have storage space then
+          // store the numbers that composed the sum
+          numberC->sums.push_back(firstN);
+          numberC->sums.push_back(verificar);
+          ++allsums;
         }
       }
     }
@@ -82,24 +79,22 @@ void GoldbachCalculator::strongConjecture(GoldbachNumber* numberC) {
 void GoldbachCalculator::weakConjecture(GoldbachNumber* numberC) {
   int64_t number = numberC->getNumber();
   int64_t allSums = 0ll;
-  for (int64_t firstN = 0 ; firstN <= (number/2) ; firstN++) {
-    for (int64_t secondN =firstN ; secondN<= (number/2) ; secondN++) {
-      for (int64_t thirdN =secondN ; thirdN <= (number) ; thirdN++) {
-        // If all current numbers are primes then verify if the sum match
-        if (primes(firstN)&&primes(secondN)&&primes(thirdN)) {
-          // Sum of all current numbers
-          int64_t sum = firstN+secondN+thirdN;
-          // If the sum match with the number
-          if (sum == number) {
+  int64_t verificar = 0ll;
+  for (int64_t firstN = 2 ; firstN <= (number/2) ; firstN++) {
+    if(primes(firstN)){
+      for (int64_t secondN =firstN ; secondN<= (number/2) ; secondN++) {
+        if(primes(secondN)){
+          verificar = number -(firstN+secondN);
+          if(primes(verificar) && (verificar>=secondN)){
             if (numberC->getPositive()) {
-            ++allSums;
-          } else {
-              // store the numbers that composed the sum
-              numberC->sums.push_back(firstN);
-              numberC->sums.push_back(secondN);
-              numberC->sums.push_back(thirdN);
               ++allSums;
-            }
+            } else {
+                // store the numbers that composed the sum
+                numberC->sums.push_back(firstN);
+                numberC->sums.push_back(secondN);
+                numberC->sums.push_back(verificar);
+                ++allSums;
+              }
           }
         }
       }

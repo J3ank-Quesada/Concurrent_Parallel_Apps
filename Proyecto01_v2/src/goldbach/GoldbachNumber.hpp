@@ -88,7 +88,7 @@ class GoldbachNumber{
   * @details for Even or Odd numbers
   */ 
   void prepareGoldbach();
-
+  bool operator==(const GoldbachNumber& other) const;
   friend std::ostream& operator << (std::ostream& ostream,
                                     const GoldbachNumber& number);
 };

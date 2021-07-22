@@ -131,3 +131,12 @@ const GoldbachNumber& goldbachNumber) {
   ostream <<"<br>";
   return ostream;
 }
+
+bool GoldbachNumber::operator==(const GoldbachNumber& other) const{
+  bool equals = false;
+  if((this->alphanumeric == other.alphanumeric) && (this->amountSums == other.amountSums) && (this->sums == other.sums) 
+  && (this->validN == other.validN) && (this->number == other.number) && (this->positive == other.positive)){
+    equals = true;
+  }
+  return equals;
+}
