@@ -15,8 +15,8 @@ void Mathematicians::consume(const NumbersContainer& work){
   calculator.startGoldbach(myWork.work);
   myWork.mutex->lock();
   *myWork.actualNumbers = *myWork.actualNumbers + 1;
-  myWork.mutex->unlock();
   if(*myWork.actualNumbers == *myWork.totalNumbers){
     myWork.sem->signal();
   }
+  myWork.mutex->unlock();
 }
