@@ -44,9 +44,13 @@ int numThreads;
   void crearDirectorio();
 
   /**
-  * @brief crea un directorio para guadar los outputs que se obtienen después de procesar uno o varios mapas
+  * @brief Hace una distribucion del trabajo en MPI
   */
   void repartirTrabajo();
+  /**
+  * @brief Pide trabajos desde los procesos no principales
+  *
+  */
   void aceptarTrabajo();
 };
 
