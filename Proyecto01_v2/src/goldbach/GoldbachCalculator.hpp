@@ -11,7 +11,6 @@
 
 class GoldbachCalculator {
  private:
-  GoldbachNumber *goldbachNumber;
 
  public:
   /**
